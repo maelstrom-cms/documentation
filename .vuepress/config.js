@@ -10,13 +10,6 @@ module.exports = {
         plugins: [
             require('tailwindcss'),
             require('autoprefixer'),
-            process.env.NODE_ENV === 'production' && purgecss({
-                content: glob.sync([
-                    path.join(__dirname, './components/**/*.{vue,js,php,html}'),
-                    path.join(__dirname, '../node_modules/@vuepress/theme-default/**/*.{vue,js,php,html}'),
-                ]),
-                defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
-            })
         ].filter(i => i)
     },
     themeConfig: {
