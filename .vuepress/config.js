@@ -3,7 +3,7 @@ const glob = require('glob-all')
 const path = require('path')
 
 module.exports = {
-    title: 'Maelstrom CMS Toolkit',
+    title: 'Maelstrom',
     description: 'Maelstrom CMS Toolkit for Laravel and React',
     plugins: ['@vuepress/active-header-links'],
     postcss: {
