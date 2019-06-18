@@ -1,0 +1,31 @@
+{
+  "name": "@maelstrom-cms/docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development vuepress dev",
+    "build": "NODE_ENV=production vuepress build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maelstrom-cms/documentation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maelstrom-cms/documentation/issues"
+  },
+  "homepage": "https://github.com/maelstrom-cms/documentation#readme",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0",
+    "@vuepress/plugin-active-header-links": "^1.0.0-rc.1",
+    "autoprefixer": "^9.6.0",
+    "glob-all": "^3.1.0",
+    "tailwindcss": "^1.0.4",
+    "vuepress": "^1.0.1"
+  }
+}
