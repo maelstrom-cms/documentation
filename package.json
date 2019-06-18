@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "NODE_ENV=development vuepress dev",
     "build": "NODE_ENV=production vuepress build --dest docs",
-    "deploy": "deploy.sh"
+    "deploy": "source deploy.sh"
   },
   "repository": {
     "type": "git",
