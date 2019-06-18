@@ -16,8 +16,8 @@ module.exports = {
                     path.join(__dirname, '../node_modules/@vuepress/theme-default/**/*.{vue,js,php,html}'),
                 ]),
                 defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-                whitelistPatterns: [/language/, /token/, /pre/],
-                whitelistPatternsChildren: [/language/, /token/, /pre/]
+                whitelistPatterns: [/language/, /token/, /pre/, /code/],
+                whitelistPatternsChildren: [/language/, /token/, /pre/, /code/],
             })
         ].filter(i => i)
     },
