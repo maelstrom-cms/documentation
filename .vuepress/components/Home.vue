@@ -194,6 +194,8 @@ export default {
 }
 </script>
 
+<style src="prismjs/themes/prism-tomorrow.css"></style>
+
 <style scoped>
     .theme-container {
         padding-top: 3.6rem;
