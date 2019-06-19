@@ -1,4 +1,4 @@
-# Extending Components
+# 🛠 Extending Components
 
 ## Blade
 

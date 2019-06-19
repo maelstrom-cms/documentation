@@ -90,7 +90,7 @@ module.exports = {
                 title: 'Examples',
                 collapsable: false,
                 children: [
-                    ['/examples/blog-post', 'Blog Post']
+                    '/examples/blog-post',
                 ]
             }
         ]

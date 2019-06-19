@@ -1,1 +1,1 @@
-# Entry Table
+# 🛠 Entry Table

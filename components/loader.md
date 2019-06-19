@@ -1,1 +1,1 @@
-# Loading Animations
+# 🛠 Loading Animations
