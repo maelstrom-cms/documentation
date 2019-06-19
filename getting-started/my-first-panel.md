@@ -4,11 +4,7 @@ Before you can create a panel, you must understand the anatomy of one.
 
 A CRUD style panel is normally made up of 5 components.
 
-- A Model
-- A Resourceful Controller
-- A Route
-- An Index Template
-- A Form Template
+[[toc]]
 
 ## A Model
 To save things, you'll need an Eloquent model.
@@ -261,4 +257,129 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
 
 ## An Index Template
 
+Our Blade components all use the normal Laravel directives, such as `@include` `@component` etc to give the most flexibility.
+
+The index template is what displays the listing of all your entries, we provide slots and sections to add your UI elements.
+
+The templates are pretty empty to start with, however we can quickly build up an interface. We will extend the `index` layout.
+
+We will add a "create" button and display the table of entries by passing in `$columns` to display. You should be able to pass in the options that the Ant Design table component supports for it's headers [https://ant.design/components/table/](https://ant.design/components/table/).
+
+We provide an additional property for `type` and this takes the name of one of our column types (see column type documentation for more).
+   
+```php
+@extends('maelstrom::layouts.index')
+
+@section('buttons')
+
+    @include('maelstrom::buttons.button', [
+        'href' => route('pages.create'),
+        'label' => 'Create Page'
+    ])
+    
+@endsection
+
+@section('content')
+
+    @include('maelstrom::components.table', [
+        'columns' => [
+            [
+                'title' => 'Name',
+                'dataIndex' => 'page',
+                'sorter' => true,
+                'type' => 'EditLinkColumn',
+                'searchable' => true,
+            ],
+        ]
+    ])
+    
+@endsection
+```
+
+::: tip
+Although you can pass in an array of columns to the table component, if you need more advance configuration, you should consider registering it via your controller.
+:::
+
+Here we generate some filters for a column based off existing categories
+
+```php
+public function index()
+{
+    return $this->panel->index('admin.pages-index')
+    ->with('columns', [
+        [
+            'title' => 'Name',
+            'dataIndex' => 'colour',
+            'sorter' => true,
+            'type' => 'EditLinkColumn',
+            'searchable' => true,
+        ],
+        [
+            'title' => 'Category',
+            'dataIndex' => 'category.name',
+            'filterMultiple' => false,
+            'filters' => Category::all()->map(function ($category) {
+                return [
+                    'text' => $category->name,
+                    'value' => $category->id
+                ];
+            })
+        ],
+    ]);
+}
+```
+
 ## A Form Template
+
+Now we have a index page, we can create a form page.
+
+There are many many options for creating forms which you can read about in our other documentation, but here we have a simple example.
+
+```php
+@extends('maelstrom::layouts.form')
+
+@section('content')
+    @component('maelstrom::components.form', [
+        'action' => $action,
+        'method' => $method,
+    ])
+    
+        @include('maelstrom::fields.text', [
+            'name' => 'post_name',
+            'label' => 'Post Name',
+            'required' => true,
+        ])
+        
+        @include('maelstrom::fields.text', [
+            'name' => 'slug',
+            'label' => 'Post Slug',
+            'required' => true,
+            'html_type' => 'url',
+        ])
+        
+        @include('maelstrom::fields.wysiwyg', [
+            'name' => 'body',
+            'label' => 'Post Body',
+            'required' => true,
+        ])
+        
+        @include('maelstrom::fields.switch', [
+            'name' => 'is_featured',
+            'label' => 'Featured on Homepage?',
+        ])
+        
+        @include('maelstrom::components.media_manager', [
+            'name' => 'header_image',
+            'max' => 1
+        ])
+    
+    @endcomponent
+    
+@endsection
+```
+
+### Et Voilà
+
+If all went to plan, you should now be able to access your routes and manage some entities!
+
+You may have realised a lack of navigation, in the next section we'll show you how to setup the sidebar.

@@ -1,6 +1,4 @@
-# Getting Started
-
-## Introduction
+# Introduction
 
 ## How it works
 

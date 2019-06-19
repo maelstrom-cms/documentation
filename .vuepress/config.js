@@ -21,6 +21,11 @@ module.exports = {
             })
         ].filter(i => i)
     },
+    markdown: {
+        toc: {
+            includeLevel: [2],
+        },
+    },
     themeConfig: {
         sidebarDepth: 1,
         logo: '/maelstrom-icon.svg',
@@ -29,17 +34,55 @@ module.exports = {
         docsRepo: 'maelstrom-cms/documentation',
         displayAllHeaders: true,
         sidebar: [
-            '/getting-started/',
-            '/getting-started/installing',
             {
-                title: 'Usage',
+                title: 'Getting Started',
                 collapsable: false,
                 children: [
-                    '/usage/my-first-panel',
-                    '/usage/edit-profile',
-                    '/usage/header',
-                    '/usage/media-manager',
-                    '/usage/sidebar',
+                    '/getting-started/',
+                    '/getting-started/installing',
+                    '/getting-started/my-first-panel',
+                    '/components/sidebar',
+                    '/getting-started/config',
+                    '/getting-started/auth',
+                ]
+            },
+            {
+                title: 'Components',
+                collapsable: false,
+                children: [
+                    '/components/panel',
+                    '/components/controllers',
+                    '/components/templates',
+                    '/components/fields',
+                    '/components/columns',
+                    '/components/buttons',
+                    '/components/repeaters',
+                    '/components/tabs',
+                    '/components/media-manager',
+                    '/components/form-options',
+                    '/components/flash-alert',
+                    '/components/entry-table',
+                    '/components/edit-profile',
+                    '/components/header',
+                    '/components/sidebar',
+                ]
+            },
+            {
+                title: 'Advance',
+                collapsable: false,
+                children: [
+                    '/advance/filtering',
+                    '/advance/searching',
+                    '/advance/ordering',
+                    '/advance/bulk-actions',
+                    '/advance/pagination',
+                    '/advance/trash',
+                    '/advance/uploading',
+                    '/advance/image-processing',
+                    '/advance/entry-transformer',
+                    '/advance/relationships',
+                    '/advance/overwriting-components',
+                    '/advance/extending-components',
                 ]
             },
             {
