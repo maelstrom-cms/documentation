@@ -189,6 +189,10 @@ export default {
             'Radio Buttons w/ Visibility Toggle',
             'Algolia Places',
             'Toggles / Switches',
+            'Edit Account Page',
+            'Trash and Soft Deletes',
+            'Filters and Searches',
+            'Bulk Actions'
         ],
     })
 }
