@@ -22,24 +22,20 @@ module.exports = {
         ].filter(i => i)
     },
     themeConfig: {
-        sidebarDepth: 2,
+        sidebarDepth: 1,
         logo: '/maelstrom-icon.svg',
         repo: 'maelstrom-cms/toolkit',
         repoLabel: 'GitHub',
         docsRepo: 'maelstrom-cms/documentation',
         displayAllHeaders: true,
         sidebar: [
-            {
-                title: 'Getting Started',
-                collapsable: false,
-                children: [
-                    '/getting-started/installing'
-                ]
-            },
+            '/getting-started/',
+            '/getting-started/installing',
             {
                 title: 'Usage',
                 collapsable: false,
                 children: [
+                    '/usage/my-first-panel',
                     '/usage/edit-profile',
                     '/usage/header',
                     '/usage/media-manager',
