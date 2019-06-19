@@ -1,12 +1,13 @@
-# Searching
+# ⚒ Searching
 
 By default you're able to use text searches on the immediate model.
 
 We use a simple `LIKE` query e.g. `LIKE %keyword%`
 
-<img src="/filter-preview.jpg" alt="Preview of filters" class="shadow m-w-full h-auto" style="width: 300px;" />
-
 ### Frontend
+
+<img src="/search-preview.png" alt="Preview of search" class="shadow m-w-full h-auto mt-4" style="width: 420px;" />
+
 
 ### Backend
 
