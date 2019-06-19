@@ -2,21 +2,23 @@
 
 Filtering can be a very complex thing, are your filters ANDs? or maybe they're ORs? - We just don't know. And because of this - we provide you with access to the Ant Design filtering system and an API to filter the data yourself to get exactly what you want.
 
+<img src="/filter-preview.jpg" alt="Preview of filters" class="shadow m-w-full h-auto" style="width: 300px;" />
+
 ### Frontend
 
 The filtering UI is provided by Ant Designs Table component, you define the `filters` property on your column which contains a `text` value to display to the user and a `value` which is sent to the backend for you to filter on.
 
 ```php
-$columns = [
-    'title' => 'Gender',
-    'dataIndex' => 'gender',
-    'filters' => Gender::all()->map(function ($gender) {
+$columns = [[
+    'title' => 'Category',
+    'dataIndex' => 'category.name',
+    'filters' => Category::all()->map(function ($category) {
         return [
-            'text' => $gender->name,
-            'value' => $gender->id,
+            'text' => $category->name,
+            'value' => $category->id
         ];
-    });
-];
+    })
+]];
 ```
 
 This will give you some filterable checkboxes within your column.
@@ -24,17 +26,17 @@ This will give you some filterable checkboxes within your column.
 If you want to disallow multiple filters then use the `filterMultiple` property and set it to `false` to get radio buttons instead.
 
 ```php
-$columns = [
-    'title' => 'Gender',
-    'dataIndex' => 'gender',
+$columns = [[
+    'title' => 'Category',
+    'dataIndex' => 'category.name',
     'filterMultiple' => false,
-    'filters' => Gender::all()->map(function ($gender) {
+    'filters' => Category::all()->map(function ($category) {
         return [
-            'text' => $gender->name,
-            'value' => $gender->id,
+            'text' => $category->name,
+            'value' => $category->id
         ];
-    });
-];
+    })
+]];
 ```
 
 ### Backend 
