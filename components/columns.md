@@ -1,4 +1,10 @@
+---
+pageClass: big-toc
+---
+
 # Columns
+
+[[toc]]
 
 ## Text
 

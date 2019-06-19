@@ -83,6 +83,7 @@ module.exports = {
                     '/advance/relationships',
                     '/advance/overwriting-components',
                     '/advance/extending-components',
+                    '/advance/custom-panels',
                 ]
             },
             {

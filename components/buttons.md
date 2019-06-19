@@ -1,4 +1,10 @@
+---
+pageClass: big-toc
+---
+
 # Buttons
+
+[[toc]]
 
 ## Button
 
