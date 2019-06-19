@@ -20,3 +20,5 @@ pageClass: big-toc
 
 ## Boolean
 
+## Media Manager
+
