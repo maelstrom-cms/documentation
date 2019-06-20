@@ -2,9 +2,7 @@
 
 We're going to have to break this one to you gently.
 
-We do not provide any authentication UI - this is not what Maelstrom is about, we're a toolkit helping you fill the gaps to create complicated interfaces.
-
-Laravel comes with it's own authentication scaffolding, and one of our aims is to utilise as much of vanilla Laravel as possible, this means no authentication scaffolding from us.
+We do not provide any Authentication UI - this is not what Maelstrom is about, we're a toolkit helping you fill the gaps to create complicated interfaces and to utilise as much of vanilla Laravel as possible, this means no authentication scaffolding from us.
 
 You can use what ever system you like, even just `php artisan make:auth`.
 
