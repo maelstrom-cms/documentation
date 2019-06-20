@@ -62,4 +62,47 @@ class MyEditAccountController extends EditAccountController
 
 ### Customising the Form
 
-The form still uses the waterfall system, which means if you want to change the form you can publish it into `/resources/vendor/maelstrom/templates/edit-account.blade.php` and make any adjustments you like.
+The form still uses the waterfall system, which means if you want to change the form you can publish it into `/resources/vendor/maelstrom/templates/edit-account.blade.php` and make any adjustments you like. By default it is pretty simple.
+
+```php
+@extends('maelstrom::layouts.form')
+
+@section('content')
+    @component('maelstrom::components.form', [
+        'action' => $action,
+        'method' => $method,
+    ])
+
+        <h2 class="cloak">Account information</h2>
+
+        @include('maelstrom::fields.text', [
+            'label' => 'Full name',
+            'name' => 'name',
+            'required' => true,
+        ])
+
+        @include('maelstrom::fields.text', [
+            'label' => 'Email address',
+            'name' => 'email',
+            'html_type' => 'email',
+            'required' => true,
+        ])
+
+        <h2 class="cloak">Security</h2>
+
+        @include('maelstrom::fields.secret', [
+            'label' => 'Change password',
+            'name' => 'new_password',
+            'help' => 'Only enter your password here if you want to change it.',
+            'autocomplete' => 'new-password'
+        ])
+
+        @slot('buttons')
+            <div class="mt-6">
+                @include('maelstrom::buttons.save')
+            </div>
+        @endslot
+
+    @endcomponent
+@endsection
+```
