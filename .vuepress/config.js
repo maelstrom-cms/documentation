@@ -71,6 +71,7 @@ module.exports = {
                 title: 'Advance',
                 collapsable: false,
                 children: [
+                    '/advance/tailwind',
                     '/advance/filtering',
                     '/advance/searching',
                     '/advance/ordering',
