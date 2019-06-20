@@ -27,6 +27,10 @@ module.exports = {
         },
     },
     themeConfig: {
+        algolia: {
+            apiKey: '1b3d815d0346dc86a09ff4d85b752d93',
+            indexName: 'maelstrom-cms',
+        },
         sidebarDepth: 1,
         logo: '/maelstrom-icon.svg',
         repo: 'maelstrom-cms/toolkit',

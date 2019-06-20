@@ -32,3 +32,34 @@ To enable the page you must first make sure it's turned on within the `config/ma
     'guard' => 'auth',
 ],
 ```
+
+Once enabled you need to set up a route for it, we do not automate this as we don't know where you want it to go, or you might want a customised one.
+
+```php
+Route::get('/admin/edit-account', '\Maelstrom\Http\Controllers\EditAccountController')->name('maelstrom.edit-account');
+Route::put('/admin/edit-account', '\Maelstrom\Http\Controllers\EditAccountController@update');
+```
+
+::: danger
+Make sure you give the route a name of `maelstrom.edit-account` otherwise some of the automation won't work.
+:::
+
+### Customising the Controller
+
+As you've defined your own route, you can point the route at your own controller, you can either completely overwrite it or extend it e.g.
+
+```php
+use \Maelstrom\Http\Controllers\EditAccountController;
+
+class MyEditAccountController extends EditAccountController
+{
+    public function __invoke()
+    {
+        return view('edit-account');
+    }
+}
+```
+
+### Customising the Form
+
+The form still uses the waterfall system, which means if you want to change the form you can publish it into `/resources/vendor/maelstrom/templates/edit-account.blade.php` and make any adjustments you like.
