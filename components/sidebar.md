@@ -132,7 +132,7 @@ Any properties you pass in will be set as props on the component.
 
 ## Using Your Own Sidebar
 
-If what we've provided doesnt meet your requirements, you can create your own sidebar.
+If what we've provided doesn't meet your requirements, you can create your own sidebar.
 
 You just need to create a blade file which will get loaded instead of our sidebar.
 

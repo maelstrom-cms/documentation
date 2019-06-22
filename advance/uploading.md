@@ -52,7 +52,7 @@ class Page extends Model
 
 ### Custom Upload Handler
 
-If the built in uploader doesnt do what you need, then you can provide a custom upload handler e.g.
+If the built in uploader doesn't do what you need, then you can provide a custom upload handler e.g.
 
 ```php
 public function __construct()

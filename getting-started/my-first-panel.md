@@ -86,7 +86,7 @@ Now you have your instance of a Maelstrom Panel, you can fill out the other meth
 
 ### The Index/Table Page of Entries
 
-We just need to return our view (which doesnt't yet exist) with an `$entries` variable.
+We just need to return our view (which doesn't't yet exist) with an `$entries` variable.
 
 `$entries` you can build yourself, however our helper will apply all filters, transformations, searches, pagination etc.
 

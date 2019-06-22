@@ -8,7 +8,7 @@ You can use what ever system you like, even just `php artisan make:auth`.
 
 ### Middleware and Guards
 
-Just because we do not handle your login/reset process - that doesnt mean we do not integrate with any authentication!
+Just because we do not handle your login/reset process - that doesn't mean we do not integrate with any authentication!
 
 You have a couple of considerations
 
