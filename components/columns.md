@@ -117,7 +117,6 @@ To display either a tick or a cross based of a boolean you can use the boolean c
 
 #### Type: `BooleanColumn`
 
-
 ## Media Manager
 
 The media manager column allows you to display 1 or more thumbnails for some uploaded media. However (sorry) to avoid performance issues you must use the [entry transformer](../advance/entry-transformer.md) to return back URLs to display, if you do not transform this data you will just see the IDs of the attached media.
