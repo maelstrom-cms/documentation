@@ -77,3 +77,17 @@ The string that you return should be the relative path to the uploaded image, ex
     // Single
     return 'public/image-34.jpg';
 ```
+
+### Custom Handlers on Classes
+
+If you're extending the `Maelstrom\Panel::class` then instead of using the API to define handlers you can define this methods directly on the class e.g.
+
+```php
+class PagePanel extends Panel
+{
+    public function uploadHandler()
+    {
+        // ...
+    }
+}
+```

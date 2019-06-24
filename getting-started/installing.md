@@ -38,14 +38,9 @@ const maelstrom = require('laravel-mix')
 maelstrom.react('@maelstrom-cms/ui/js/maelstrom.js', 'public/js')
 
 // Compiles all our custom CSS
-maelstrom.sass('@maelstrom-cms/ui/js/maelstrom.sass', 'public/css')
-
-// Enables Tailwind (you might need to merge this into an existing .options) - If you have a custom config you can pass it in of course.
-maelstrom.options({
-    postCss: [
-        require('tailwindcss')()
-    ]
-})
+mix.postCss('@maelstrom-cms/ui/css/maelstrom.css', 'public/css', [
+    require('tailwindcss'),
+]);
 ```
 
 When you now run `yarn run dev` you should have a `maelstrom.css` and `maelstrom.js` inside your `public/js` and `public/css` folder.

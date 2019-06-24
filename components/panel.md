@@ -889,3 +889,38 @@ public function destroy(string $successMessage = null): Model
  */
 public function redirect($routeName)
 ```
+
+### Custom Handlers on Classes
+
+If you're extending the `Maelstrom\Panel::class` then instead of using the API to define handlers such as the Filter or Search handler you can define this methods directly on the class e.g.
+
+```php
+class PagePanel extends Panel
+{
+    public function entriesTransformer()
+    {
+        // ...
+    }
+    
+    public function imageProcessingHandler()
+    {
+        // ...
+    }
+    
+    public function uploadHandler()
+    {
+        // ...
+    }
+    
+    public function filterHandler()
+    {
+        // ...
+    }
+    
+    public function searchHandler()
+    {
+        // ...
+    }
+    
+}
+```

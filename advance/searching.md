@@ -52,6 +52,20 @@ class PageService
 As long as you add your constraints to the `$query` you can implement this however you see fit.
 :::
 
+### Custom Handlers on Classes
+
+If you're extending the `Maelstrom\Panel::class` then instead of using the API to define handlers you can define this methods directly on the class e.g.
+
+```php
+class PagePanel extends Panel
+{
+    public function searchHandler()
+    {
+        // ...
+    }
+}
+```
+
 
 ### Laravel Scout
 

@@ -34,3 +34,17 @@ public function __construct()
 ``` 
 
 As long as you return all the fields you need for your table, everything should be straight forward.
+
+### Custom Handlers on Classes
+
+If you're extending the `Maelstrom\Panel::class` then instead of using the API to define handlers you can define this methods directly on the class e.g.
+
+```php
+class PagePanel extends Panel
+{
+    public function entriesTransformer()
+    {
+        // ...
+    }
+}
+```

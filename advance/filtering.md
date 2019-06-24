@@ -78,3 +78,17 @@ The data structure of the `$filters` object will be different, depending on what
 :::
 
 Once you've attached your additional logic to the query, the results should now be filtered!
+
+### Custom Handlers on Classes
+
+If you're extending the `Maelstrom\Panel::class` then instead of using the API to define handlers you can define this methods directly on the class e.g.
+
+```php
+class PagePanel extends Panel
+{
+    public function filterHandler()
+    {
+        // ...
+    }
+}
+```
