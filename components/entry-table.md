@@ -69,6 +69,9 @@ This should be an array of other objects/classes/arrays which expose the followi
 
 You can read about the columns over [here.](./columns.md)
 
+### The Search
+
+You're also able to mark columns as searchable by using the `searchable` and `searchColumn` props.
 
 ### Bulk Actions
 
