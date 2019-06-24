@@ -24,7 +24,7 @@ If you're not using the `maelstrom()` helper and instead using the container to 
 public function __construct(ContainerInterface $container)
 {
     $this->panel = $container->makeWith(MyCustomPanel::class, [
-        'query' => (new Page)->query(),
+        'model' => Page::class,
     ]);
 }
 ```

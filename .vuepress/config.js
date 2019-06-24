@@ -56,6 +56,7 @@ module.exports = {
                 children: [
                     '/components/panel',
                     '/components/controllers',
+                    '/components/validation',
                     '/components/templates',
                     '/components/fields',
                     '/components/columns',

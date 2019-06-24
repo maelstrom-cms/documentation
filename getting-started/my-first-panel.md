@@ -74,7 +74,7 @@ class PageController extends Controller
     public function __construct(ContainerInterface $container)
     {
         $this->panel = $container->makeWith(Panel::class, [
-            'query' => (new Page)->query(),
+            'model' => Page::class,
         ]);
     }
     
