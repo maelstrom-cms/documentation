@@ -4,22 +4,32 @@ We use the default Tailwind CSS config to help control the layouts within your a
 
 This gives you un-opinionated granular control over your application, making the smallest of tweaks with ease.
 
-There are 3 ways you can manage the asset pipeline here.
+There are 3 ways you can manage the CSS processing.
 
-- Your own pipeline.
-- Laravel Mix.
-- Tailstrom.
+- Use your own pipeline e.g. Gulp
+- [Laravel Mix](#laravel-mix)
+- [Tailstrom](#tailstrom)
 
 ### Laravel Mix
 
 ::: danger
-If you are also using Tailwind for your project then you might face certain conflicts as Mix doesn't have the ability to process 2 different Tailwind configs, read our **Tailstrom** section to find out how
+If you are also using Tailwind for your project then you might face certain conflicts as Mix doesn't have the ability to process 2 different Tailwind configs, read our **[Tailstrom](#tailstrom)** section to find out how to solve this.
 :::
 
+Maelstrom uses PostCSS *(as this powers Tailwind)* which means you'll need to process your CSS somehow, the easiest way is via Laravel Mix by using the following snippet (taken from the Tailwind website)
 
-### Tailstrom
+```js
+mix.postCss('node_modules/maelstrom/css/maelstrom.css', 'public/css', [
+    require('tailwindcss'),
+]);
+```
 
-> Resolving conflicts with multiple Tailwind configs and Laravel Mix
+This will save the `maelstrom.css` to `public/css/maelstrom.css` which is the default within the `config/maelstrom.php` - You can change both of these to what ever suits you.
+
+
+### Tailstrom (Quick Start)
+
+#### Resolving conflicts with multiple Tailwind configs and Laravel Mix
 
 By default Tailwind doesn't need a config file published, it will use the defaults. This is what we use - but if your project has a Tailwind config then when you compile Maelstrom it will include your custom config instead.
 
