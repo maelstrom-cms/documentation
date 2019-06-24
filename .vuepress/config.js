@@ -59,6 +59,7 @@ module.exports = {
                     '/components/validation',
                     '/components/templates',
                     '/components/entry-table',
+                    '/components/the-form',
                     '/components/columns',
                     '/components/fields',
                     '/components/buttons',

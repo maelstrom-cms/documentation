@@ -76,8 +76,6 @@ This includes everything from `maelstrom.layouts.basic` plus:
 
 If you do not provide a `content` slot then it will fallback to adding `@include('maelstrom::components.table')` which will look for a global `$entries` and `$columns` which can be set via `$this->panel->setTableHeadings()` and `$this->panel->getEntries()` (see more on the Panel API)
 
-e.g.
-
 ```php
 class PageController
 {
@@ -117,4 +115,42 @@ class PageController
 
 ### Form
 
-### Edit Account
+The form template is the most complicated as it will house all your fields, tabs, repeaters etc.
+
+Again it's very similar to the `maelstrom::layouts.basic` however it has no default `content`
+
+It does have some additional slots which can be used for some basic use cases.
+
+- `form_before` to display content before the form.
+- `form_after` to display content after the form.
+- `footer` to display content in the footer.
+
+Once you've got your template extending the `maelstrom::layouts.form` template you will still need to use the `content` slot and pass in the [form component.](./the-form.md)
+
+```php
+@extend('maelstrom::layouts.form')
+
+@section('content')
+
+    @component('maelstrom::components.form', [
+        'action' => $action, // route('pages.create')
+        'method' => $emthod, // POST
+    ])
+    
+        @include('maelstrom::fields.text', [
+            'name' => 'page_name',
+            'label' => 'Page Name',
+        ])
+    
+    @endcomponent
+
+@endsection
+``` 
+
+::: tip
+As both `$action` and `$method` can change between `create` and `update` it's best to pass these down from the controller method.
+:::
+
+### Edit Profile
+
+We also have a simple template for editing your account information `maelstrom::templates.edit-account`. You can read more about this in the [documentation.](./edit-profile.md)
