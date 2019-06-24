@@ -60,3 +60,20 @@ However you pass down `$entries` and `$columns` is up to you!
 The `$entries` array can be collected however you like, we provide a helper method to collect these via `$this->panel->getEntries()` which includes various things such as pagination, filtering, searching etc. So if you're going to do this yourself make sure you include this functionality.
 
 If the data you need for each row doesn't belong directly on the model or isn't in the models serialisation method, then you'll need to define a transformer which will return all the data that the table needs to display what you need.
+
+### The Columns
+
+The table also needs some `$columns` - which as previously mentioned can be defined however you like.
+
+This should be an array of other objects/classes/arrays which expose the following properties
+
+You can read about the columns over [here.](./columns.md)
+
+
+### Bulk Actions
+
+You're also able to define which bulk actions are available for this panel, to find out more about these please read the [documentation](../advance/bulk-actions.md).
+
+### Trash / Soft Deleted Entries
+
+There is also the ability to show deleted models, which you can read about [here.](../advance/trash.md)

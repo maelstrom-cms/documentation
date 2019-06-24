@@ -56,3 +56,13 @@ The active state on a tab has a certain priority, allowing you to overwrite the 
 - Hash in the URL *(highest)*
 
 This means if you've used PHP to set the active tab to "tab 2" but the URL has got `#tab-3` then Tab 3 will display instead.
+
+### Direction
+
+By default the tabs run horizontally however you can pass in `$direction` of either `horizontal` or `vertical` e.g.
+
+```php
+@component('maelstrom::components.tabs', [
+    'direction' => 'vertical',
+])
+```
