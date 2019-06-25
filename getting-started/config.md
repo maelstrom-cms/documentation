@@ -30,7 +30,7 @@ return [
     'breadcrumb' => [
         [
             'label' => 'Dashboard',
-            'route' => '/admin'
+            'url' => '/admin'
         ]
     ],
 
@@ -198,7 +198,15 @@ return [
             'image/png',
             'image/jpeg',
             'application/pdf',
-        ]
+        ],
+        
+        /*
+         * What dimensions should we make the thumbnails of uploaded assets?
+         */
+        'thumbnails' => [
+            'width' => 300,
+            'height' => 300,
+        ],
     ]
 ];
 ```
