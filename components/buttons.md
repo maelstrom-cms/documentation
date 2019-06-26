@@ -50,6 +50,33 @@ If you need a link `<a>` that looks like a button, then you just pass a `url` pr
 
 ## Form Controls
 
-## Nested Resources
+By default our `maelstrom::components.form` component automatically populates the `buttons` slot at the bottom of the form component, however if you need this elsewhere
+you're able to to include some basic form controls.
 
-## Media Manager
+<img src="/form-options-preview.jpg" class="m-w-full h-auto my-2" style="width: 500px;" />
+
+```php
+@include('maelstrom::buttons.form-controls', [
+    'can_save' => true,
+    'can_delete' => false,
+    'can_restore' => false,
+])
+```
+
+## Nested Resource / Page
+
+We have a simple implementation of nested resources which opens a an Ant Design Drawer component to a specific URL.
+
+This can be useful for creating live resources, or anything else that you don't want the user to leave the main page.
+
+To include the button which opens a nested resource you can use:
+
+```php
+@include('maelstrom::buttons.nested-resource', [
+    'button' => 'Create New Page'
+    'url' => route('pages.create'),
+    'icon' => 'home'
+    'style' => 'primary',
+    'size' => 'small',
+]);
+```
