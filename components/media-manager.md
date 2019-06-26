@@ -1,6 +1,8 @@
-# 🛠 Media Manager
+# Media Manager
 
 We provide a basic media manager which allows you to easily get started with media management, rather than having a folder stray files you can see exactly what is uploaded and able to manage them.
+
+<img src="/media-browser-preview.jpg" alt="Preview of Media Browser" class="m-w-full h-auto mt-4 shadow-md" style="width: 700px;" />
 
 #### Features
 - Searchable
@@ -20,8 +22,6 @@ You're able to edit the `config/maelstrom.php` and define an alternative Model i
 
 If you are using your own model make sure to implement the same methods and output formats.
 
-[SCREEN SHOT HERE]
-
 The media manager itself is not a standalone web page - although this can be added if you see fit by including the component on a page and exposing the appropriate props to it.
 
 It manifests itself in the form of a button which when clicked opens the manager and returns back the ID of the media item which can then be saved in the database.
@@ -38,6 +38,8 @@ Including the media manager button in your form is the same as any other fields
     // ... other options e.g. help, required etc...
 ])
 ```
+
+<img src="/photos-preview.jpg" alt="Preview of photo button" class="m-w-full h-auto mt-4 shadow-md" style="width: 700px;" />
 
 ### Supported formats
 

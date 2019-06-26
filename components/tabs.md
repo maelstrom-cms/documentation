@@ -2,7 +2,7 @@
 
 Tabs are a super helpful way to minimise the amount of data shown at any one time.
 
-<img src="/tab-preview.png" alt="Preview of tabs" class="m-w-full h-auto" style="width: 500px;" />
+<img src="/tab-preview.jpg" alt="Preview of tabs" class="m-w-full h-auto" style="width: 500px;" />
 
 They are controlled by blade components and nesting.
 

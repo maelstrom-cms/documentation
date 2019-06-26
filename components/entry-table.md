@@ -5,6 +5,8 @@ The entry table which typically shows from the `index` index method needs a coup
 - A list of entries to display
 - A configuration of table headings for each column
 
+<img src="/table-preview.jpg" class="m-w-full h-auto my-2" />
+
 If you're using the `maelstrom::layouts.index` template to extend from, the table component will automatically search for the global `$entries` and `$columns` variables.
 
 This means you can pass `$columns` in from a controller if you like, or define them inline, both will work!

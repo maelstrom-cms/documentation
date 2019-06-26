@@ -9,7 +9,7 @@ This means you cannot search on *(without a custom search handler)*:
 
 ### Frontend
 
-<img src="/search-preview.png" alt="Preview of search" class="shadow m-w-full h-auto mt-4" style="width: 420px;" />
+<img src="/search-preview.jpg" alt="Preview of search" class="shadow m-w-full h-auto mt-4" style="width: 420px;" />
 
 ### Backend
 

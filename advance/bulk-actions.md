@@ -2,7 +2,7 @@
 
 We have the ability to apply bulk actions from the index page.
 
-<img src="/bulk-preview.png" alt="Preview of search" class="shadow m-w-full h-auto my-4" style="width: 420px;" />
+<img src="/bulk-preview.jpg" alt="Preview of search" class="shadow m-w-full h-auto my-4" style="width: 420px;" />
 
 By default we provide the ability for the following:
 

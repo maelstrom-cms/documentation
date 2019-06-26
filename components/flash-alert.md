@@ -2,7 +2,7 @@
 
 We have a component to help display Alerts - which can also be used for Flash Messages.
 
-<img src="/flash-preview.png" alt="Preview of alerts" class="m-w-full h-auto mt-4" style="width: 500px;" />
+<img src="/flash-preview.jpg" alt="Preview of alerts" class="m-w-full h-auto mt-4" style="width: 500px;" />
 
 ### Alerts
 To manually include an alert you can include the blade component.

@@ -9,4 +9,4 @@ public function __construct()
 }
 ```
 
-<img src="/pagination-preview.png" alt="Preview of pagination" class="shadow m-w-full h-auto mt-4" style="width: 300px;" />
+<img src="/pagination-preview.jpg" alt="Preview of pagination" class="shadow m-w-full h-auto mt-4" style="width: 300px;" />

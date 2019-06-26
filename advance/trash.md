@@ -15,7 +15,7 @@ public function __construct()
 
 Once enabled, you will see a small toggle to the right of the table which lets you access the trash.
 
-<img src="/trash-preview.png" alt="Preview of trash" class="shadow m-w-full h-auto mt-4" style="width: 300px;" />
+<img src="/trash-preview.jpg" alt="Preview of trash" class="shadow m-w-full h-auto mt-4" style="width: 300px;" />
 
 You will see it just adds a query string to the URL of `in_trash=1` so you can access this at any time.
 
@@ -23,10 +23,10 @@ You will see it just adds a query string to the URL of `in_trash=1` so you can a
 
 When editing an item, you have the ability to "Delete" an item from the bottom right button.
 
-<img src="/delete-button.png" alt="Preview of delete button" class="shadow m-w-full h-auto mt-4" style="width: 140px;" />
+<img src="/delete-button.jpg" alt="Preview of delete button" class="shadow m-w-full h-auto mt-4" style="width: 140px;" />
 
 ### Restoring items
 
 When viewing a deleted item, the Delete button will change into a Restore button.
 
-<img src="/restore-button.png" alt="Preview of restore button" class="shadow m-w-full h-auto mt-4" style="width: 140px;" />
+<img src="/restore-button.jpg" alt="Preview of restore button" class="shadow m-w-full h-auto mt-4" style="width: 140px;" />

@@ -23,6 +23,8 @@ You don't **need** to use this - you can just copy the applied CSS classes from 
 
 You can include a traditional `<button>` element with some additional properties e.g
 
+<img src="/buttons-preview.jpg" class="m-w-full h-auto my-2" style="width: 350px;" />
+
 ```php
 @include('maelstrom::buttons.button', [
     'style' => 'primary', // primary, default, dashed, danger

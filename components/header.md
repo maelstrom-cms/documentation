@@ -16,6 +16,8 @@ The `header-nav.blade.php` also houses a
 
 It's likely if you want to add more things up here.
 
+<img src="/header-preview.jpg" alt="Preview of header" class="m-w-full h-auto mt-4 shadow-md" />
+
 ### Stacks
 
 You have the option to either publish the view and make your modifications, however we provide 2 stacks which you can push additional items to
