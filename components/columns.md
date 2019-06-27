@@ -28,9 +28,13 @@ pageClass: big-toc
 
 By default all column types act as `text` unless a `type` is specified.
 
+<img src="/text-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+
 ## Text Link
 
 You can turn columns into links, which can be useful for linking to related models etc.
+
+<img src="/text-link-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `LinkColumn`
 
@@ -59,6 +63,8 @@ You can turn columns into links, which can be useful for linking to related mode
 
 For usability we like to make the entry name a clickable link to take you to the edit page, so we recommend using this as your first column type for the entry name field. e.g.
 
+<img src="/edit-link-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+
 #### Type: `EditLinkColumn`
 
 ```php
@@ -72,6 +78,8 @@ For usability we like to make the entry name a clickable link to take you to the
 ## Video
 
 When using the video input you can display a small thumbnail and link to it in the listings.
+
+<img src="/video-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `VideoColumn`
 
@@ -87,19 +95,23 @@ When using the video input you can display a small thumbnail and link to it in t
 
 When using the image input you can display a small thumbnail and link to it to the full size.
 
-#### Type: `VideoColumn`
+<img src="/image-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+
+#### Type: `ImageColumn`
 
 ```php
 [
-    'title' => 'Instructional Video',
-    'type' => 'VideoColumn',
-    'dataIndex' => 'video',
+    'title' => 'Featured Image',
+    'type' => 'ImageColumn',
+    'dataIndex' => 'image',
 ]
 ```
 
 ## Icon
 
 Often you might want to display an icon to represent something, you can use the [entry transformer](../advance/entry-transformer.md) to provide the name of the icon to display.
+
+<img src="/icon-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `IconColumn`
 
@@ -115,11 +127,15 @@ Often you might want to display an icon to represent something, you can use the 
 
 To display either a tick or a cross based of a boolean you can use the boolean column.
 
+<img src="/boolean-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+
 #### Type: `BooleanColumn`
 
 ## Media Manager
 
 The media manager column allows you to display 1 or more thumbnails for some uploaded media. However (sorry) to avoid performance issues you must use the [entry transformer](../advance/entry-transformer.md) to return back URLs to display, if you do not transform this data you will just see the IDs of the attached media.
+
+<img src="/image-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `MediaManagerColumn`
 
