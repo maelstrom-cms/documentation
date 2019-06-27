@@ -2,7 +2,7 @@
 pageClass: big-toc
 ---
 
-# ⚒ Buttons
+# Buttons
 
 The concept of buttons is pretty straight forward, it allows you to create a styled button with ease, passing in some configuration options.
 
