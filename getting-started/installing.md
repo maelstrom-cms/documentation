@@ -39,6 +39,7 @@ maelstrom.react('@maelstrom-cms/ui/js/maelstrom.js', 'public/js')
 
 // Compiles all our custom CSS
 mix.postCss('@maelstrom-cms/ui/css/maelstrom.css', 'public/css', [
+    require('postcss-import'),
     require('tailwindcss'),
 ]);
 ```

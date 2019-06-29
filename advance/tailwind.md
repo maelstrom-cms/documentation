@@ -20,6 +20,7 @@ Maelstrom uses PostCSS *(as this powers Tailwind)* which means you'll need to pr
 
 ```js
 mix.postCss('node_modules/maelstrom/css/maelstrom.css', 'public/css', [
+    require('postcss-import'),
     require('tailwindcss'),
 ]);
 ```

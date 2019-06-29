@@ -28,7 +28,7 @@ pageClass: big-toc
 
 By default all column types act as `text` unless a `type` is specified.
 
-<img src="/text-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+<img src="/text-column-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 ## Text Link
 
@@ -95,7 +95,7 @@ When using the video input you can display a small thumbnail and link to it in t
 
 When using the image input you can display a small thumbnail and link to it to the full size.
 
-<img src="/image-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+<img src="/image-column-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `ImageColumn`
 
@@ -133,9 +133,9 @@ To display either a tick or a cross based of a boolean you can use the boolean c
 
 ## Media Manager
 
-The media manager column allows you to display 1 or more thumbnails for some uploaded media. However (sorry) to avoid performance issues you must use the [entry transformer](../advance/entry-transformer.md) to return back URLs to display, if you do not transform this data you will just see the IDs of the attached media.
+The media manager column allows you to display 1 or more thumbnails for some uploaded media, just provide the IDs of the attached media.
 
-<img src="/image-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+<img src="/image-column-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `MediaManagerColumn`
 
