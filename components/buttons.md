@@ -63,20 +63,40 @@ you're able to to include some basic form controls.
 ])
 ```
 
-## Nested Resource / Page
+## Nested Resources
 
 We have a simple implementation of nested resources which opens a an Ant Design Drawer component to a specific URL.
 
 This can be useful for creating live resources, or anything else that you don't want the user to leave the main page.
 
-To include the button which opens a nested resource you can use:
+#### Preview
+
+<img src="/nested-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 500px;" />
+
+#### View: `maelstrom::buttons.nested-resource`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| url | Whats the starting page for the iframe | `undefined` | ✅ |
+| icon | What icon to display in the button | `plus` |  |
+| button | What text to display in the button | Create |  |
+| style | What type of button to display? | `default` |  |
+| size | What size to display? | `default` |  |
+
+You're also able to include a nested resource button anywhere in the templates.
 
 ```php
 @include('maelstrom::buttons.nested-resource', [
-    'button' => 'Create New Page'
-    'url' => route('pages.create'),
-    'icon' => 'home'
+    'url' => route('recipe.create'),
+    'icon' => 'plus',
+    'button' => 'Create Recipe',
     'style' => 'primary',
-    'size' => 'small',
+    'size' => 'large',
 ]);
 ```
+
+::: tip
+The drawer is a glorified iframe which adds a class `iframe-mode` to `.maelstrom-wrapper` - so if you're using your own templates, make sure you include that class.
+:::

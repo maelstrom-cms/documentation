@@ -2,7 +2,22 @@
 
 We have the ability to create repeatable field sets which allows you to create, remove and reorder sets of information which can be saved into a single JSON filled array.
 
-<img src="/repeater-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### View: `maelstrom::components.repeater`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| max_items | The maximum number if children | 100 | | 
+| min_items | The minimum number if children | 0 | | 
+| button | Label to display on the button | Item | | 
+| fields | An array of field configurations to display | `undefined` | ✅ |
+
+#### Preview 
+
+<img src="/repeater-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 600px;" />
+
+#### Model Configuration
 
 The field set returns a collection of JSON objects, so you'll need to configure your model to cast your attribute as an array e.g.
 
@@ -14,6 +29,8 @@ class Page extends Model
     ];
 }
 ```
+
+#### From Blade to Arrays
 
 Including a repeater within your form is very similar to any other field inputs, you can provide a `name` and `label` etc...
 
@@ -38,15 +55,14 @@ The `component` field takes the name of the blade include for the input. e.g.
 ]
 ```
 
-You can also define the minimum and maximum number of items.
-
-A full example could look like:
+#### Example 
 
 ```php
 @include('maelstrom::components.repeater', [
     'name' => 'members',
     'max_items' => 5,
     'min_items' => 1,
+    'button' => 'Player',
     'fields' => [
         [
             'component' => 'text',

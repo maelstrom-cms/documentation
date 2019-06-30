@@ -801,7 +801,7 @@ If you're using it for relationships you can enable the create button feature to
 | show_search | Allows the user to use an autocomplete to filter results | `true` |  |
 | options | An array of options to choose from | `undefined` | ✅ |
 | remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
-| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources)) | `false` |  |
 
 #### Example
 
@@ -856,7 +856,7 @@ The multiple select is identical to a single select, but just allows multiple op
 | show_search | Allows the user to use an autocomplete to filter results | `true` |  |
 | options | An array of options to choose from | `undefined` | ✅ |
 | remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
-| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources)) | `false` |  |
 
 #### Example 
 
@@ -894,7 +894,7 @@ If you want to make sure you always get the `label` value you can set `save_labe
 | show_search | Allows the user to use an autocomplete to filter results | `true` |  |
 | options | An array of options to choose from | `undefined` | ✅ |
 | remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
-| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources)) | `false` |  |
 
 #### Example
 
@@ -937,7 +937,7 @@ This is the recommended input to use when you need to present the user with lots
 | - | :- | :- | :-: |
 | options | An array of options to choose from | `undefined` | ✅ |
 | remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
-| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources)) | `false` |  |
 
 #### Example 
 
@@ -1098,7 +1098,22 @@ We also have the ability to create repeatable field sets which store as JSON.
 
 You can read in full detail on the [Repeatable Inputs Documentation](./repeaters.md).
 
+#### Preview
+
 <img src="/repeater-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+
+#### View: `maelstrom::components.repeater`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| max_items | The maximum number if children | 100 | | 
+| min_items | The minimum number if children | 0 | | 
+| button | Label to display on the button | Item | | 
+| fields | An array of field configurations to display | `undefined` | ✅ |
+
+#### Example 
 
 You must define a `fields` array which takes a list of inputs that you want to include, with the addition of the `component` property which defines which `input` to include.
 
@@ -1106,6 +1121,7 @@ You must define a `fields` array which takes a list of inputs that you want to i
 @include('maelstrom::components.repeater', [
     'max_items' => 5,
     'min_items' => 1,
+    'button' => 'Player',
     'fields' => [
         [
             'component' => 'text',
@@ -1131,26 +1147,12 @@ You must define a `fields` array which takes a list of inputs that you want to i
 As repeaters are pure JSON, they cannot accept file uploads currently, however you can still use the [Media Manager](#media-manager).
 :::
 
-## Nested Resources (sort of)
+## Nested Resources
 
-As mentioned in previous input fields we have the ability to create nested / related resources on the fly by a pull out drawer.
+As mentioned in previous input fields we have the currently have the ability to create nested / related resources on the fly by a pull out drawer.
 
-You're able to attach the create button to most multi-choice inputs, e.g. Selects, Transfers etc.
+<img src="/nested-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 500px;" />
 
-<img src="/nested-preview.jpg" class="m-w-full h-auto" style="width: 500px;" />
+You're able to attach the create button to most multi-choice inputs, e.g. Selects, Transfers etc. via the `create_button` property.
 
-You're also able to include a nested resource button anywhere in the templates.
-
-```php
-@include('maelstrom::input.nested-resource', [
-    'url' => 'any url here',
-    'icon' => 'plus',
-    'button' => 'Create',
-    'style' => 'primary',
-    'size' => 'large',
-]);
-```
-
-::: tip
-The drawer is a glorified iframe which adds a class `iframe-mode` to `.maelstrom-wrapper` - so if you're using your own templates, make sure you include that class.
-:::
+This property is explained on the [Nested Resources Documentation.](./buttons.md#nested-resource-page)
