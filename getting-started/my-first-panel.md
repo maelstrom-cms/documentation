@@ -370,7 +370,7 @@ There are many many options for creating forms which you can read about in our o
         
         @include('maelstrom::components.media_manager', [
             'name' => 'header_image',
-            'max' => 1
+            'max_items' => 1
         ])
     
     @endcomponent

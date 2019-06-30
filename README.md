@@ -126,7 +126,7 @@ class PostController extends Controller
         
         @include('maelstrom::components.media_manager', [
             'name' => 'header_image',
-            'max' => 1
+            'max_items' => 1
         ])
     
     @endcomponent

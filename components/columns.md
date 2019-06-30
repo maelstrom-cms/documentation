@@ -141,13 +141,13 @@ The media manager column allows you to display 1 or more thumbnails for some upl
 
 | Property | Description            | Example |
 | -        | :-                     | :-      |
-| max      | Maximum assets to show | 2       |
+| max_items| Maximum assets to show | 2       |
 
 ```php
 [
     'title' => 'Photos',
     'type' => 'MediaManagerColumn',
     'dataIndex' => 'photo_urls',
-    'max' => 3,
+    'max_items' => 3,
 ]
 ```

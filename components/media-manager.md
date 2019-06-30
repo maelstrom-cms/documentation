@@ -34,7 +34,7 @@ Including the media manager button in your form is the same as any other fields
 @include('maelstrom::components.media_manager', [
     'name' => 'supporting_images',
     'label' => 'Supporting Images',
-    'max' => '4',
+    'max_items' => '4',
     // ... other options e.g. help, required etc...
 ])
 ```
