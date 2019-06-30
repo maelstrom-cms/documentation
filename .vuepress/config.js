@@ -61,7 +61,7 @@ module.exports = {
                     '/components/entry-table',
                     '/components/the-form',
                     '/components/columns',
-                    '/components/fields',
+                    '/components/input-fields',
                     '/components/buttons',
                     '/components/repeaters',
                     '/components/tabs',
