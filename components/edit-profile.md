@@ -75,13 +75,13 @@ The form still uses the waterfall system, which means if you want to change the 
 
         <h2 class="cloak">Account information</h2>
 
-        @include('maelstrom::fields.text', [
+        @include('maelstrom::inputs.text', [
             'label' => 'Full name',
             'name' => 'name',
             'required' => true,
         ])
 
-        @include('maelstrom::fields.text', [
+        @include('maelstrom::inputs.text', [
             'label' => 'Email address',
             'name' => 'email',
             'html_type' => 'email',
@@ -90,7 +90,7 @@ The form still uses the waterfall system, which means if you want to change the 
 
         <h2 class="cloak">Security</h2>
 
-        @include('maelstrom::fields.secret', [
+        @include('maelstrom::inputs.secret', [
             'label' => 'Change password',
             'name' => 'new_password',
             'help' => 'Only enter your password here if you want to change it.',

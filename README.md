@@ -100,26 +100,26 @@ class PostController extends Controller
         'method' => $method,
     ])
     
-        @include('maelstrom::fields.text', [
+        @include('maelstrom::inputs.text', [
             'name' => 'post_name',
             'label' => 'Post Name',
             'required' => true,
         ])
         
-        @include('maelstrom::fields.text', [
+        @include('maelstrom::inputs.text', [
             'name' => 'slug',
             'label' => 'Post Slug',
             'required' => true,
             'html_type' => 'url',
         ])
         
-        @include('maelstrom::fields.wysiwyg', [
+        @include('maelstrom::inputs.wysiwyg', [
             'name' => 'body',
             'label' => 'Post Body',
             'required' => true,
         ])
         
-        @include('maelstrom::fields.switch', [
+        @include('maelstrom::inputs.switch', [
             'name' => 'is_featured',
             'label' => 'Featured on Homepage?',
         ])

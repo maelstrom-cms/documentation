@@ -6,7 +6,7 @@ pageClass: big-toc
 
 We have a whole myriad of input fields to help you which you can use out of the box *(although you can create your own)* many of them follow the same patterns to make it easier for you.
 
-Fields are all added to your form via the blade templates, all within the `maelstrom::fields` namespace. These can all be overwritten or extended for your own use.
+Fields are all added to your form via the blade templates, all within the `maelstrom::inputs` namespace. These can all be overwritten or extended for your own use.
 
 [[toc]]
 
@@ -35,7 +35,7 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
 <img src="/checkbox-preview.jpg" class="m-w-full h-auto" style="width: 200px;" />
 
 ```php
-@include('maelstrom::fields.checkbox', [
+@include('maelstrom::inputs.checkbox', [
     'options' => [
         [
             'label' => 'Can edit',
@@ -61,7 +61,7 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
 <img src="/colour-preview-2.jpg" class="m-w-full h-auto" style="width: 220px;" />
 
 ```php
-@include('maelstrom::fields.colour', [
+@include('maelstrom::inputs.colour', [
     'type' => 'Circle',
     'colours' => ['#ffffff', '#000000'],
 ]);
@@ -93,7 +93,7 @@ If you want to provide a selection of pre-defined colours then pass in an array 
 <img src="/date-preview-2.jpg" class="m-w-full h-auto" style="width: 250px;" />
 
 ```php
-@include('maelstrom::fields.date', [
+@include('maelstrom::inputs.date', [
     'display_format' => 'DD/MM/YYYY',
     'save_format' => 'YYYY-MM-DD',
     'allow_clear' => true,
@@ -116,7 +116,7 @@ The `save_format` and `display_format` should follow the patterns provided by [M
 <img src="/date-range-preview-2.jpg" class="m-w-full h-auto" style="width: 350px;" />
 
 ```php
-@include('maelstrom::fields.date_range', [
+@include('maelstrom::inputs.date_range', [
 
     'name_start' => 'promotion_start',
     'name_end' => 'promotion_end',
@@ -154,7 +154,7 @@ If you're using the `date_range` input within a repeater then you just supply th
 <img src="/date-time-preview.jpg" class="m-w-full h-auto my-6" style="width: 300px;" />
 
 ```php
-@include('maelstrom::fields.date_time', [
+@include('maelstrom::inputs.date_time', [
 
     'display_format' => 'DD/MM/YYYY HH:mm A',
     'save_format' => 'YYYY-MM-DD HH:mm:ss',
@@ -184,7 +184,7 @@ If you're using the `date_range` input within a repeater then you just supply th
 <img src="/time-preview.jpg" class="m-w-full h-auto mt-4" style="width: 200px;" />
 
 ```php
-@include('maelstrom::fields.time', [
+@include('maelstrom::inputs.time', [
     
     'use_12_hours' => true,
     'second_step' => 10,
@@ -214,7 +214,7 @@ If you need to upload a single un-managed file, e.g. a PDF then this will be for
 <img src="/file-preview.jpg" class="m-w-full h-auto" style="width: 300px;" />
 
 ```php
-@include('maelstrom::fields.file', [
+@include('maelstrom::inputs.file', [
     'icon' => 'upload',
     'button' => 'Attach PDF',
 ])
@@ -233,7 +233,7 @@ This acts the same as the single file uploader, however will store an array of f
 <img src="/files-preview.jpg" class="m-w-full h-auto" style="width: 300px;" />
 
 ```php
-@include('maelstrom::fields.files', [
+@include('maelstrom::inputs.files', [
     
     'max_items' => 5,
     
@@ -249,7 +249,7 @@ Very much the same as the file uploader, but support thumbnails.
 <img src="/image-preview.jpg" class="m-w-full h-auto" style="width: 250px;" />
 
 ```php
-@include('maelstrom::fields.image', [
+@include('maelstrom::inputs.image', [
     'icon' => 'file-image',
     'button' => 'Select image',
 ])
@@ -264,7 +264,7 @@ Make sure you configure your `uploadables` within your panel as described [the U
 <img src="/images-preview.jpg" class="m-w-full h-auto mt-6" style="width: 500px;" />
 
 ```php
-@include('maelstrom::fields.images', [
+@include('maelstrom::inputs.images', [
     
     'max_items' => 5,
     
@@ -302,7 +302,7 @@ This lets you pick an icon from the outlined `icon` collection from [Ant Design 
 <img src="/icons-preview.jpg" class="m-w-full h-auto mb-3" style="width: 300px;" />
 
 ```php
-@include('maelstrom::fields.icon', [
+@include('maelstrom::inputs.icon', [
     'icons' => ['file', 'file-image', 'file-pdf'],
 ])
 ```
@@ -316,7 +316,7 @@ We use [React MDE](https://github.com/andrerpena/react-mde) for provide markdown
 <img src="/markdown-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
 
 ```php
-@include('maelstrom::fields.markdown', [
+@include('maelstrom::inputs.markdown', [
     // ... nothing special just the defaults.
 ])
 ```
@@ -326,7 +326,7 @@ We use [React MDE](https://github.com/andrerpena/react-mde) for provide markdown
 <img src="/number-preview.jpg" class="m-w-full h-auto mt-4" style="width: 100px;" />
 
 ```php
-@include('maelstrom::fields.number', [
+@include('maelstrom::inputs.number', [
     'min' => 10,
     'max' => 1000,
     'precision' => 2, // how many decimal places
@@ -341,7 +341,7 @@ We're using [Algolia Places React Wrapper](https://github.com/kontrollanten/algo
 <img src="/places-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
 
 ```php
-@include('maelstrom::fields.place', [
+@include('maelstrom::inputs.place', [
     'options' => [
         'countries' => ['es'],
         'clientOptions' => [
@@ -367,7 +367,7 @@ When you need to enable only a single choice from some options, radios are often
 <img src="/radio-preview.jpg" class="m-w-full h-auto" style="width: 150px;" />
 
 ```php
-@include('maelstrom::fields.radio', [
+@include('maelstrom::inputs.radio', [
     'options' => [
         [
             'label' => 'Yes',
@@ -393,7 +393,7 @@ The text input powers several other inputs, allowing them to inherit certain oth
 <img src="/text-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
 
 ```php
-@include('maelstrom::fields.text', [
+@include('maelstrom::inputs.text', [
     'html_type' => 'url',
     'autocomplete' => 'new-password',
     'allow_clear' => true,
@@ -419,7 +419,7 @@ You can enable "text area mode" on the `text` component by passing the `html_typ
 <img src="/textarea-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
 
 ```php
-@include('maelstrom::fields.text', [
+@include('maelstrom::inputs.text', [
     'html_type' => 'textarea',
     'auto_size' => [
         'minRows' => 5,
@@ -437,7 +437,7 @@ Sometimes it can be useful to generate random strings e.g. for API keys or passw
 <img src="/random-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
 
 ```php
-@include('maelstrom::fields.random', [
+@include('maelstrom::inputs.random', [
     'length' => 20,
     'charset' => '0123456789', // Custom character set to generate from.
 ])
@@ -450,7 +450,7 @@ Sometimes it can be useful to generate random strings e.g. for API keys or passw
 <img src="/rating-preview.jpg" class="m-w-full h-auto mt-4" style="width: 170px;" />
 
 ```php
-@include('maelstrom::fields.rating', [
+@include('maelstrom::inputs.rating', [
     'count' => 8, // max allowed stars
     'allow_half' => true,
     'character' => '$',
@@ -468,7 +468,7 @@ Although not recommended for setting users passwords, this can be used for secre
 <img src="/secret-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
 
 ```php
-@include('maelstrom::fields.secret', [
+@include('maelstrom::inputs.secret', [
     // ... those from the text input.
 ])
 ```
@@ -484,7 +484,7 @@ If you're using it for relationships you can enable the nested resource feature 
 > **More Reading:** Use the [Form Options API](./form-options.md) to fetch remote data.
 
 ```php
-@include('maelstrom::fields.select', [
+@include('maelstrom::inputs.select', [
     'allow_clear' => true,
     'show_search' => true,
     'options' => [
@@ -523,7 +523,7 @@ The multiple select is identical to a single select, but just allows multiple op
 <img src="/multi-select-preview.jpg" class="m-w-full h-auto mb-4" style="width: 700px;" />
 
 ```php
-@include('maelstrom::fields.select_multiple', [
+@include('maelstrom::inputs.select_multiple', [
     // ... same as single select
 ])
 ```

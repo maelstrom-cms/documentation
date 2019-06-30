@@ -11,7 +11,7 @@ We use the the methods described on the [Laravel Docs](https://laravel.com/docs/
 This means if you use a blade directive e.g.
 
 ```php
-@include('maelstrom::fields.text')
+@include('maelstrom::inputs.text')
 ```
 
 and you want to overwrite the field for **EVERYTHING** then you should add your own into the same folder structure e.g.
@@ -29,7 +29,7 @@ You can find all existing blade templates in the root directory of `/vendor/mael
 You can find out the name of a component by opening the blade file e.g. if you want to change the text input component you can find
 
 ```php
-@include('maelstrom::fields.text', [
+@include('maelstrom::inputs.text', [
     'name' => 'Original Field'
 ])
 ```

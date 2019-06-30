@@ -137,7 +137,7 @@ Once you've got your template extending the `maelstrom::layouts.form` template y
         'method' => $emthod, // POST
     ])
     
-        @include('maelstrom::fields.text', [
+        @include('maelstrom::inputs.text', [
             'name' => 'page_name',
             'label' => 'Page Name',
         ])
