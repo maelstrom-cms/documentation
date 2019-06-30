@@ -8,21 +8,26 @@ pageClass: big-toc
 
 ### Required props
 
-- `title` - The text that displays on the heading
-- `dataIndex` - the property that stores the data to pass to the row, this can use dot notation for nested properties e.g. `category.name`
+| Property   | Description                                      |
+| -          | :-                                               |
+| title      | The text that displays on the heading                 |
+| dataIndex | The property that stores the data to pass to the row, this can use dot notation for nested properties e.g. `category.name` |
 
 ### Optional props
 
-- `type` - Pass in the name of a column type e.g. `BooleanColumn` or even a custom column.
-- `sorter` - Enables the sorting button on the heading e.g. `'sorter' => true`.
-- `filters` - An array of `text` / `value` to make the heading filterable - find out more in the [filtering docs.](../advance/filtering.md)
-- `filterMultiple` - If the filter has multiple options.
-- `align` - Text alignment of the content.
-- `width` - Take a guess.
-- `className` - A custom classname for the column.
-- `fixed` - If the column should be fixed position e.g. `left` or `right`.
-- `searchable` - If the column should show in the search dropdown.
-- `searchColumn` - What db column to search when selected.
+| Property   | Description                                      |
+| -          | :-                                               |
+| type | Pass in the name of a column type e.g. `BooleanColumn` or even a custom column. |
+| sorter | Enables the sorting button on the heading e.g. `'sorter' => true`. |
+| filters | An array of `text` / `value` to make the heading filterable - find out more in the [filtering docs.](../advance/filtering.md) |
+| filterMultiple | If the filter has multiple options. |
+| align | Text alignment of the content. |
+| width | Take a guess. |
+| className | A custom classname for the column. |
+| fixed | If the column should be fixed position e.g. `left` or `right`. |
+| searchable | If the column should show in the search dropdown. |
+| searchColumn | What db column to search when selected. |
+
 
 ## Text
 
@@ -79,7 +84,7 @@ For usability we like to make the entry name a clickable link to take you to the
 
 When using the video input you can display a small thumbnail and link to it in the listings.
 
-<img src="/video-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
+<img src="/video-column-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
 #### Type: `VideoColumn`
 

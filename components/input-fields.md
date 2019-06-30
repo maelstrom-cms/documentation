@@ -12,13 +12,17 @@ Fields are all added to your form via the blade templates, all within the `maels
 
 ### Required props
 
-- `name` - The name of the attribute/db column e.g. `$post->name` would be `name`.
+| Property   | Description                                      |
+| -          | :-                                               |
+| name      | The name of the attribute/db column e.g. `$post->name` would be `name`. |
 
 ### Optional props
 
-- `label` - The text which displays in the label (defaults to the `name` field).
-- `help` - Displays a short piece of help text under the input
-- `required` - Adds a red `*` on the input.
+| Property   | Description                                      | Default |
+| -          | :-                                               | :- |
+| label | The text which displays in the label. | `name` |
+| help | Displays a short piece of help text under the input. | `null` |
+| required | Adds a red `*` on the input. | `false` |
 
 ::: tip
 Whenever an array of options/configurations is passed, we expect a `label` and `value` property - of which the `value` is posted back to the server if selected.
@@ -32,7 +36,19 @@ In the below examples, we will omit the `required` and `optional` props and only
 
 Displays a normal single checkbox, or a group of checkboxes provided by `$options` which allows multiple selections - occasionally used instead of a select menu.
 
-<img src="/checkbox-preview.jpg" class="m-w-full h-auto" style="width: 200px;" />
+#### Preview
+
+<img src="/checkbox-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 200px;" />
+
+#### View: `maelstrom::inputs.checkbox`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| options | An array of configs for the checkboxes to display. | `undefined` | ✅ |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.checkbox', [
@@ -57,8 +73,21 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
 
 > Sorry we're English, so it's `colour` in maelstrom world - This component utilises [https://casesandberg.github.io/react-color/](https://casesandberg.github.io/react-color/)
 
+#### Preview
+
 <img src="/colour-preview.jpg" class="m-w-full h-auto" style="width: 200px;" /><br />
 <img src="/colour-preview-2.jpg" class="m-w-full h-auto" style="width: 220px;" />
+
+#### View: `maelstrom::inputs.colour`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| type | The type of picker from react-colour | `Circle` | |
+| colours | An array of hex values which will act as the pre-defined colours to choose from. | (as per react-color) | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.colour', [
@@ -67,7 +96,7 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
 ]);
 ```
 
-Other `type` we accept are:
+Other `type`'s we accept are:
 
 - Circle (default)
 - Github
@@ -81,16 +110,28 @@ Other `type` we accept are:
 - Swatches
 - Block
 
-If you want to provide a selection of pre-defined colours then pass in an array of hex values to the `options` property e.g.
-
-```php
-'colours' => ['#ffffff', '#000000'],
-```
-
 ## Date Picker
+
+#### Preview
 
 <img src="/date-preview.jpg" class="m-w-full h-auto" style="width: 250px;" /><br />
 <img src="/date-preview-2.jpg" class="m-w-full h-auto" style="width: 250px;" />
+
+#### View: `maelstrom::inputs.date`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| display_format | What format to display the date in - from Moment.js | `DD/MM/YYYY` | |
+| save_format | What format to display the save in, most likely SQL format | `YYYY-MM-DD` | |
+| allow_clear | Show a button to clear the input | `false` | |
+| show_today | Show the button which allows you to pick today | `false` | |
+| allow_future | Allow dates from the future | `true` | |
+| allow_past | Allow dates from the past | `true` | |
+| disabled_dates | An array of `YYYY-MM-DD` dates to disable. | `[]` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.date', [
@@ -112,8 +153,31 @@ The `save_format` and `display_format` should follow the patterns provided by [M
 
 ## Date Range Picker
 
+#### Preview
+
 <img src="/date-range-preview.jpg" class="m-w-full h-auto" style="width: 350px;" /><br />
 <img src="/date-range-preview-2.jpg" class="m-w-full h-auto" style="width: 350px;" />
+
+#### View: `maelstrom::inputs.date_range`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| name_start | Which attribute to store the start date in | | ✅ |
+| name_end | Which attribute to store the end date in | | ✅ |
+| name | When in a repeater, which attribute to store the date range in | | (✅ If in repeater) |
+| display_format | What format to display the date in - from Moment.js | `DD/MM/YYYY` | |
+| save_format | What format to display the save in, most likely SQL format | `YYYY-MM-DD` | |
+| allow_clear | Show a button to clear the input | `false` | |
+| show_today | Show the button which allows you to pick today | `false` | |
+| allow_future | Allow dates from the future | `true` | |
+| allow_past | Allow dates from the past | `true` | |
+| disabled_dates | An array of `YYYY-MM-DD` dates to disable. | `[]` | |
+| disabled_hours | An array of hours in 24h format to disable e.g. `[07, 08, 21]` | `[]` | |
+| disabled_minutes | An array of minutes to disable e.g. `[10, 20, 30]` | `[]` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.date_range', [
@@ -151,7 +215,28 @@ If you're using the `date_range` input within a repeater then you just supply th
 
 ## Date Time Picker
 
+#### Preview
+
 <img src="/date-time-preview.jpg" class="m-w-full h-auto my-6" style="width: 300px;" />
+
+#### View: `maelstrom::inputs.date_time`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| display_format | What format to display the date in - from Moment.js | `DD/MM/YYYY HH:mm A` | |
+| save_format | What format to display the save in, most likely SQL format | `YYYY-MM-DD HH:mm:ss` | |
+| allow_clear | Show a button to clear the input | `false` | |
+| show_today | Show the button which allows you to pick today | `false` | |
+| allow_future | Allow dates from the future | `true` | |
+| allow_past | Allow dates from the past | `true` | |
+| disabled_dates | An array of `YYYY-MM-DD` dates to disable. | `[]` | |
+| disabled_hours | An array of hours in 24h format to disable e.g. `[07, 08, 21]` | `[]` | |
+| disabled_minutes | An array of minutes to disable e.g. `[10, 20, 30]` | `[]` | |
+| disabled_seconds | An array of seconds to disable e.g. `[10, 20, 30]` | `[]` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.date_time', [
@@ -169,7 +254,7 @@ If you're using the `date_range` input within a repeater then you just supply th
     'disabled_minutes' => [
         5, 15, 25, 35, 45, 55,
     ],
-    'disabled_minutes' => [
+    'disabled_seconds' => [
         10, 20, 30, 40, 50, 60,
     ],
     'allow_clear' => true,
@@ -181,7 +266,28 @@ If you're using the `date_range` input within a repeater then you just supply th
 
 ## Time Picker
 
+#### Preview
+
 <img src="/time-preview.jpg" class="m-w-full h-auto mt-4" style="width: 200px;" />
+
+#### View: `maelstrom::inputs.time`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| display_format | What format to display the date in - from Moment.js | `HH:mm A` | |
+| save_format | What format to display the save in, most likely SQL format | `HH:mm:ss` | |
+| allow_clear | Show a button to clear the input | `false` | |
+| use_12_hours | Show a button to clear the input | `false` | |
+| hour_step | Show a button to clear the input | `1` | |
+| minute_step | Show a button to clear the input | `10` | |
+| second_step | Show a button to clear the input | `10` | |
+| disabled_hours | An array of hours in 24h format to disable e.g. `[07, 08, 21]` | `[]` | |
+| disabled_minutes | An array of minutes to disable e.g. `[10, 20, 30]` | `[]` | |
+| disabled_seconds | An array of seconds to disable e.g. `[10, 20, 30]` | `[]` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.time', [
@@ -200,7 +306,7 @@ If you're using the `date_range` input within a repeater then you just supply th
     'disabled_minutes' => [
         5, 15, 25, 35, 45, 55,
     ],
-    'disabled_minutes' => [
+    'disabled_seconds' => [
         10, 20, 30, 40, 50, 60,
     ],
     'allow_clear' => true,
@@ -211,7 +317,20 @@ If you're using the `date_range` input within a repeater then you just supply th
 
 If you need to upload a single un-managed file, e.g. a PDF then this will be for you.
 
-<img src="/file-preview.jpg" class="m-w-full h-auto" style="width: 300px;" />
+#### Preview
+
+<img src="/file-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 300px;" />
+
+#### View: `maelstrom::inputs.file`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| icon | The icon to display within the button | `upload` | |
+| button | The text to display in the button | Select file | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.file', [
@@ -230,7 +349,21 @@ Make sure you configure your `uploadables` within your panel as described [the U
 
 This acts the same as the single file uploader, however will store an array of file paths *so make sure your `protected $casts`* is correct.
 
-<img src="/files-preview.jpg" class="m-w-full h-auto" style="width: 300px;" />
+#### Preview
+
+<img src="/files-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 300px;" />
+
+#### View: `maelstrom::inputs.files`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| icon | The icon to display within the button | `upload` | |
+| button | The text to display in the button | Select file | |
+| max_items | Maximum number of files | 1000 | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.files', [
@@ -246,7 +379,20 @@ This acts the same as the single file uploader, however will store an array of f
 
 Very much the same as the file uploader, but support thumbnails.
 
-<img src="/image-preview.jpg" class="m-w-full h-auto" style="width: 250px;" />
+#### Preview
+
+<img src="/image-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 250px;" />
+
+#### View: `maelstrom::inputs.image`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| icon | The icon to display within the button | `file-image` | |
+| button | The text to display in the button | Select image | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.image', [
@@ -261,7 +407,21 @@ Make sure you configure your `uploadables` within your panel as described [the U
 
 ## Multiple Image Uploader
 
-<img src="/images-preview.jpg" class="m-w-full h-auto mt-6" style="width: 500px;" />
+#### Preview
+
+<img src="/images-preview.jpg" class="mt-6 m-w-full h-auto mt-6" style="width: 500px;" />
+
+#### View: `maelstrom::inputs.images`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| icon | The icon to display within the button | `file-image` | |
+| button | The text to display in the button | Select images | |
+| max_items | Maximum number of files | 1000 | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.images', [
@@ -277,17 +437,29 @@ Make sure you configure your `uploadables` within your panel as described [the U
 
 For full explanation of the media manager you can refer to the [Media Manager Documentation](./media-manager.md)
 
-<img src="/media-manager-preview.jpg" class="m-w-full h-auto" style="width: 600px;" /><br />
+#### Preview
+
+<img src="/media-manager-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 600px;" />
+
+#### View: `maelstrom::components.media_manager`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| max_items | Maximum number of assets | 1 | |
+
+#### Example
 
 ```php
 @include('maelstrom::components.media_manager', [
     'label' => 'Photo',
     'name' => 'photo',
-    'max_items' => 1
+    'max_items' => 5,
 ])
 ```
 
-> **Warning** - Notice the media manager is within `components` not `fields`.
+> **Warning** - Notice the media manager is within `components` not `inputs`.
 
 When the button is clicked, a Drawer component will open with the media library loaded allowing you to make your selection.
 
@@ -299,7 +471,19 @@ Not a very helpful field input, but we have it anyway :)
 
 This lets you pick an icon from the outlined `icon` collection from [Ant Design Icons](https://ant.design/components/icon/).
 
-<img src="/icons-preview.jpg" class="m-w-full h-auto mb-3" style="width: 300px;" />
+#### Preview
+
+<img src="/icons-preview.jpg" class="mt-6 m-w-full h-auto mb-3" style="width: 300px;" />
+
+#### View: `maelstrom::inputs.icon`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| icons | An array of icon names to limit the selection to. | (all ant design icons) | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.icon', [
@@ -315,6 +499,10 @@ We use [React MDE](https://github.com/andrerpena/react-mde) for provide markdown
 
 <img src="/markdown-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
 
+#### View: `maelstrom::inputs.markdown`
+
+#### Example
+
 ```php
 @include('maelstrom::inputs.markdown', [
     // ... nothing special just the defaults.
@@ -323,14 +511,29 @@ We use [React MDE](https://github.com/andrerpena/react-mde) for provide markdown
 
 ## Number Input
 
+#### Preview
+
 <img src="/number-preview.jpg" class="m-w-full h-auto mt-4" style="width: 100px;" />
+
+#### View: `maelstrom::inputs.number`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| min | Smallest possible number | 0 | |
+| max | Biggest possible number | 100000 | |
+| precision | How many decimal places | 0 | |
+| step | When the up/down is clicked - how much to adjust by. | 1 | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.number', [
     'min' => 10,
     'max' => 1000,
-    'precision' => 2, // how many decimal places
-    'step' => 10, // when the up/down is clicked - how much to adjust by.
+    'precision' => 2,
+    'step' => 10,
 ])
 ```
 
@@ -338,7 +541,25 @@ We use [React MDE](https://github.com/andrerpena/react-mde) for provide markdown
 
 We're using [Algolia Places React Wrapper](https://github.com/kontrollanten/algolia-places-react) to provide Algolia Places support.
 
-<img src="/places-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### Preview
+
+<img src="/places-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 600px;" />
+
+#### View: `maelstrom::inputs.place`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| options | Plugin options from `algolia-places-react` | [] | |
+
+The `options` prop takes all the options explained on:
+
+- [options](https://address-autocomplete-react.netlify.com/api/#!/AlgoliaPlaces)
+- [options.clientOptions](https://www.algolia.com/doc/api-client/getting-started/instantiate-client-index/#client-options)
+- [options.autocompleteOptions](https://github.com/algolia/autocomplete.js#options)
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.place', [
@@ -354,17 +575,23 @@ We're using [Algolia Places React Wrapper](https://github.com/kontrollanten/algo
 ])
 ```
 
-The `options` prop takes all the options explained on  and []()
-
-- [options](https://address-autocomplete-react.netlify.com/api/#!/AlgoliaPlaces)
-- [options.clientOptions](https://www.algolia.com/doc/api-client/getting-started/instantiate-client-index/#client-options)
-- [options.autocompleteOptions](https://github.com/algolia/autocomplete.js#options)
-
 ## Radio Buttons
 
 When you need to enable only a single choice from some options, radios are often useful.
 
-<img src="/radio-preview.jpg" class="m-w-full h-auto" style="width: 150px;" />
+#### Preview
+
+<img src="/radio-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 150px;" />
+
+#### View: `maelstrom::inputs.radio`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| options | An array of configs for the radios to display. | `undefined` | ✅ |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.radio', [
@@ -390,7 +617,29 @@ The text input powers several other inputs, allowing them to inherit certain oth
 - [Random Generator](#random-string-generator)
 - [Secret / Password](#secret-password-field)
 
-<img src="/text-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
+#### Preview
+
+<img src="/text-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 800px;" />
+
+#### View: `maelstrom::inputs.text`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| html_type | Change the html `type` attribute e.g. `url` or `email` | text |  |
+| autocomplete | Change the html `autocomplete` attribute e.g. `new-password` | `null` |  |
+| allow_clear | Show a button to clear the fields value | `true` |  |
+| prefix | Text to show at the start of the text input | `null` |  |
+| prefix_icon | Icon to show at the start of the text input from ant design icons | `null` |  |
+| suffix | Text to show at the end of the text input | `null` |  |
+| suffix_icon | Icon to show at the end of the text input from ant design icons | `null` |  |
+| addon_before | Adds a block in front of the input with this text | `null` |  |
+| addon_before_icon | Adds a block in front of the input with this icon | `null` |  |
+| addon_after | Adds a block after of the input with this text | `null` |  |
+| addon_after_icon | Adds a block after of the input with this icon | `null` |  |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.text', [
@@ -412,11 +661,28 @@ The text input powers several other inputs, allowing them to inherit certain oth
 ]);
 ```
 
+::: warning
+There is a known issue with ant design regarding including `allow_clear = true` with `suffix` and `suffix_icon` which makes their alignments wonky.
+:::
+
 ## Text Area Input
 
-You can enable "text area mode" on the `text` component by passing the `html_type`.
+You can enable "text area mode" on the `maelstrom::inputs.text` component by passing the `html_type` as `textarea`.
 
-<img src="/textarea-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
+#### Preview
+
+<img src="/textarea-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 800px;" />
+
+#### View: `maelstrom::inputs.text`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| html_type | Set this to `textarea` | `text` | ✅ |
+| auto_size | Takes the configuration for the automatic sizing (shown below). | `false` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.text', [
@@ -434,12 +700,25 @@ The `auto_size` property allows the text area to automatically grow with the con
 
 Sometimes it can be useful to generate random strings e.g. for API keys or passwords.
 
-<img src="/random-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
+#### Preview
+
+<img src="/random-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 800px;" />
+
+#### View: `maelstrom::inputs.random`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| length | What length string should be generated? | 32 | |
+| charset | Which characters could be included in the random string. | `abcdefghijklmnopqrstuvwxyz`<br/>`ABCDEFGHIJKLMNOPQRSTUVWXYZ`<br/>`0123456789`<br/>`!@£$%^&*()-_=+[]{};:|/.,<>` | |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.random', [
     'length' => 20,
-    'charset' => '0123456789', // Custom character set to generate from.
+    'charset' => '0123456789',
 ])
 ```
 
@@ -447,14 +726,35 @@ Sometimes it can be useful to generate random strings e.g. for API keys or passw
 
 ## Star Rating
 
-<img src="/rating-preview.jpg" class="m-w-full h-auto mt-4" style="width: 170px;" />
+#### Preview
+
+<img src="/rating-preview.jpg" class="m-w-full h-auto mt-4" style="width: 140px;" />
+
+#### View: `maelstrom::inputs.rating`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| count | Max allowed stars to be picked | 5 | |
+| character | Displays a text character instead of the star icon | `undefined` | |
+| icon | The icon to display as the star | ⭐️ | |
+| colour | The colour of the icon when selected | `#f6da4d` | |
+| allow_half | Allow half star ratings | `false` | |
+| allow_clear | Allow the rating to be clicked again to clear | `false` | |
+
+::: warning
+If you define the `character` prop it will overwrite the `icon` prop.
+:::
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.rating', [
-    'count' => 8, // max allowed stars
+    'count' => 8,
     'allow_half' => true,
     'character' => '$',
-    'icon' => 'home', // icon gets overwritten by character, can't have both.
+    'icon' => 'home',
     'colour' => '#ff0000',
     
     'allow_clear' => true,
@@ -465,7 +765,13 @@ Sometimes it can be useful to generate random strings e.g. for API keys or passw
 
 Although not recommended for setting users passwords, this can be used for secretive information such as private keys.
 
-<img src="/secret-preview.jpg" class="m-w-full h-auto" style="width: 800px;" />
+#### Preview
+
+<img src="/secret-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 800px;" />
+
+#### View: `maelstrom::inputs.secret`
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.secret', [
@@ -479,9 +785,25 @@ Select menu can be used for a variety of things, commonly used for relationships
 
 If you're using it for relationships you can enable the create button feature to create items on the fly.
 
-<img src="/select-preview-2.jpg" class="m-w-full h-auto" style="width: 500px;" />
+#### Preview
+
+<img src="/select-preview-2.jpg" class="mt-6 m-w-full h-auto" style="width: 500px;" />
 
 > **More Reading:** Use the [Form Options API](./form-options.md) to fetch remote data.
+
+#### View: `maelstrom::inputs.select`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| allow_clear | Allow the input to be reset with a clear button | `true` |  |
+| show_search | Allows the user to use an autocomplete to filter results | `true` |  |
+| options | An array of options to choose from | `undefined` | ✅ |
+| remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.select', [
@@ -520,7 +842,23 @@ If you want to use the inline "Create" button - you must define a `remote_uri` t
 
 The multiple select is identical to a single select, but just allows multiple options to be selected and stored as an array.
 
-<img src="/multi-select-preview.jpg" class="m-w-full h-auto mb-4" style="width: 700px;" />
+#### Preview
+
+<img src="/multi-select-preview.jpg" class="mt-4 m-w-full h-auto mb-4" style="width: 700px;" />
+
+#### View: `maelstrom::inputs.select_multiple`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| allow_clear | Allow the input to be reset with a clear button | `true` |  |
+| show_search | Allows the user to use an autocomplete to filter results | `true` |  |
+| options | An array of options to choose from | `undefined` | ✅ |
+| remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+
+#### Example 
 
 ```php
 @include('maelstrom::inputs.select_multiple', [
@@ -540,7 +878,25 @@ When the user creates a new tag, you'll get posted the string value so you can h
 
 If you want to make sure you always get the `label` value you can set `save_labels` to `true`.
 
-<img src="/tags-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### Preview
+
+<img src="/tags-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 600px;" />
+
+#### View: `maelstrom::inputs.tags`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| allow_wild_values | Allows you display items within the input that do not exist in the `options` array. | `false` | |
+| save_labels | Sends the `label` value to the backend rather than the `value` field. | `false` | |
+| allow_clear | Allow the input to be reset with a clear button | `true` |  |
+| show_search | Allows the user to use an autocomplete to filter results | `true` |  |
+| options | An array of options to choose from | `undefined` | ✅ |
+| remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.tags', [
@@ -563,17 +919,27 @@ If you want to make sure you always get the `label` value you can set `save_labe
 ]);
 ```
 
-The `allow_wild_values` property allows you display items within the input that do not exist in the `options` array.
-
-The `save_labels` property sends the `label` value to the backend rather than the `value` field.
-
 ## Transfer / Relationship
 
 This is the recommended input to use when you need to present the user with lots of options which can be attached to give greater visibility, e.g. Product Specs.
 
-<img src="/transfer-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### Preview
+
+<img src="/transfer-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 600px;" />
 
 > **More Reading:** Use the [Form Options API](./form-options.md) to fetch remote data.
+
+#### View: `maelstrom::inputs.transfer`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| options | An array of options to choose from | `undefined` | ✅ |
+| remote_uri | A url to fetch options from | `undefined` | (✅ If using `create_button`)  |
+| create_button | Displays a create button to live create resources. (See [Nested resources](#nested-resources-sort-of)) | `false` |  |
+
+#### Example 
 
 ```php
 @include('maelstrom::inputs.transfer', [
@@ -610,7 +976,16 @@ If you want to use the inline "Create" button - you must define a `remote_uri` t
 
 You can provide any URL that the [oEmbed spec supports](https://oembed.com/) and it will automatically fetch the video data and store a JSON object with some useful information in.
 
-<img src="/video-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### Preview
+
+<img src="/video-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 600px;" />
+
+#### View: `maelstrom::inputs.video`
+
+#### Additional properties
+This field extends the [TextInput](#text-input) which means it supports most of the same props.
+
+#### Example 
 
 Both Vimeo and YouTube will return the following in a standardised format - so makes sure you cast your model to `object` for this attribute e.g.
 
@@ -622,8 +997,6 @@ Both Vimeo and YouTube will return the following in a standardised format - so m
     "title":"4K Wild Animals - Africa, Mana Pools National Park with Nature Sounds - 4 HRS"
 }
 ```
-
-This field extends the [TextInput](#text-input) which means it supports most of the same props.
 
 ```php
 @include('maelstrom::inputs.video', [
@@ -639,11 +1012,17 @@ If you have a CSP, make sure `https://noembed.com` is whitelisted for `connect-s
 
 We use [React Prosemirror](https://github.com/hubgit/react-prosemirror/blob/master/react-prosemirror/README.md) with a basic WYSIWYG configuration - You can extend this component and replace it with your own if you want more customisation.
 
-<img src="/wysiwyg-preview.jpg" class="m-w-full h-auto" style="width: 600px;" />
+#### View: `maelstrom::inputs.wysiwyg`
+
+#### Previews
+
+<img src="/wysiwyg-preview.jpg" class="mt-4 m-w-full h-auto" style="width: 600px;" />
 
 When toggling between source code mode it will render another editor provided by [React Ace Editor](https://github.com/securingsincity/react-ace) to fine tune the content.
 
 <img src="/wysiwyg-preview-2.jpg" class="m-w-full h-auto" style="width: 600px;" />
+
+#### Example
 
 ```php
 @include('maelstrom::inputs.wysiwyg', [
@@ -655,7 +1034,28 @@ When toggling between source code mode it will render another editor provided by
 
 For boolean style fields we have the toggle switch component, which has the ability to adjust the visibility of other fields.
 
+#### Preview
+
 <img src="/switch-preview.jpg" class="m-w-full h-auto" style="width: 100px;" />
+
+#### View: `maelstrom::inputs.switch`
+
+#### Additional properties
+
+| Property   | Description | Default | Required |
+| - | :- | :- | :-: |
+| on_value | What value should be returned when the switch is on | 1 | |
+| off_value | What value should be returned when the switch is off | 0 | |
+| on_text | What text to display when the switch is on | `null` | |
+| off_text | What text to display when the switch is off | `null` | |
+| on_icon | What icon to display when the switch is on | `null` | |
+| off_icon | What icon to display when the switch is off | `null` | |
+| hide_on | Hide other fields when the switch is on (see below) | `[]` | |
+| hide_off | Hide other fields when the switch is off (see below) | `[]` | |
+
+> If an `_icon` prop is defined this overwrites any `_text` props set.
+
+#### Example 
 
 ```php
 @include('maelstrom::input.switch', [
@@ -676,7 +1076,7 @@ For boolean style fields we have the toggle switch component, which has the abil
 ])
 ```
 
-If an `_icon` is defined this overwrites any `_text` props set.
+#### Toggling field visibility
 
 The `hide_on` and `hide_off` props accept an array of other inputs which should be hidden when the switch is either turned on or off. You should pass in the name of the attribute you want to hide e.g.
 
