@@ -2,7 +2,7 @@
 pageClass: big-toc
 ---
 
-# ⚒ Columns
+# Columns
 
 [[toc]]
 
@@ -158,3 +158,91 @@ The media manager column allows you to display 1 or more thumbnails for some upl
 ```
 
 ## Custom Columns
+
+Creating columns is fairly straight forward, it only really consists of a javascript file. 
+
+You'll need to:
+
+1. Create your component
+2. Register your component
+3. Use it!
+
+Below is an example...
+
+#### Create your component
+
+```jsx
+import React from 'react'
+
+export default class MyColumn extends React.Component {
+
+    components(props) {
+        super(props)
+        
+        // You can access the whole record via `props.record`
+        // Explore all the props to see what data you get :)
+    }
+    
+    render() {
+        if (!this.props.text) {
+            return <span>-</span>
+        }
+        
+        // The value provided by `dataIndex` gets returned into the `props.text` field.
+        return this.props.text
+    }
+}
+```
+
+#### Register your component
+
+Depending on your setup, the below might change - however for example purposes we'll assume you're using Mix.
+
+Firstly you'll need to make sure you've got a javascript file to load your custom code into, include it in the page and compile it e.g.
+
+1. Create `resources/js/my-maelstrom.js`
+2. Import the component registry
+4. Register your component
+
+```js
+// my-maelstrom.js
+
+import Registry from '@maelstrom/support/Registry'
+import MyCustomColumn from './MyColumn.js'
+
+Registry.register({
+    MyCustomColumn: MyColumn,
+});
+```
+
+Now you'll need to compile your JS e.g.
+
+```js
+// webpack.mix.js
+
+mix.react('resources/js/my-maelstrom.js', 'public/js')
+```
+
+Once your code is compiling you need to include it within your `config/maelstrom.php` e.g.
+
+```php
+'custom_js' => [
+    'js/my-maelstrom.js',
+],
+```
+
+Once you've confirmed your JS is included on the page you can render your component by including it in your `$columns` array.
+
+#### Use it!
+
+```php
+@extends('maelstrom::layouts.index', [
+    'columns' => [
+        [
+            'title' => 'Page Title',
+            'dataIndex' => 'page_title',
+            'type' => 'MyCustomColumn', // The name you registered your column as.
+        ],
+    ],
+])
+```

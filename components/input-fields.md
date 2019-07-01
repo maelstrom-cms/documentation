@@ -2,7 +2,7 @@
 pageClass: big-toc
 ---
 
-# ⚒ Fields & Inputs
+# Fields & Inputs
 
 We have a whole myriad of input fields to help you which you can use out of the box *(although you can create your own)* many of them follow the same patterns to make it easier for you.
 
@@ -1158,3 +1158,173 @@ You're able to attach the create button to most multi-choice inputs, e.g. Select
 This property is explained on the [Nested Resources Documentation.](./buttons.md#nested-resource-page)
 
 ## Custom Inputs / Fields
+
+Creating your own input is incredibly easy, you can pretty much do this however you like, the only prerequisite is that you populate a named input within the form (usually `type="hidden"`) so that it is available within `$request->all()`.
+
+How the value gets into the input is up to you.
+
+If you're creating a re-usable component, our recommendation would be to follow the same patterns as we've already presented to allow a more consistent interface, this would mean your field should accept:
+
+- `name`
+- `label`
+- `help`
+- `required`
+
+If you need to create a javascript component then you'll need to do a few things...
+
+1. Create your component
+2. Register your component
+3. Use it!
+
+Below is an example...
+
+#### Create your component
+
+```jsx
+import React from 'react'
+import { Form } from 'antd'
+import ParseProps from '@maelstrom-ui/support/ParseProps'
+
+export default class MyCustomInput extends React.Component {
+    
+    constructor(props) {
+        super(props)
+        
+        // ParseProps is a helper which handles parsing and default values from prop data.
+        this.required = ParseProps(props, 'required', false)
+        
+        this.state = {
+            value: props.value,
+        }
+    }
+    
+    onChange = (value) => {
+        this.setState({
+            value: value,
+        })
+    }
+    
+    render() {
+        return (
+            <Form.Item
+                label={ this.props.label }
+                validateStatus={ this.props.error ? 'error' : null }
+                help={ this.props.error || this.props.help }
+                required={ this.required }
+            >
+                <input
+                    name={ this.props.name }
+                    value={ this.state.value }
+                    type="hidden"
+                />
+                
+                /*
+                 *
+                 * YOUR CUSTOM COMPONENT CODE
+                 *
+                 * make sure to update the state e.g. `onChange()`
+                 *
+                 */
+                
+            </Form.Item>
+        )
+    }
+}
+```
+
+This will work for most forms, however if your field needs to work within the repeater then you'll need to make sure it accepts the `onChange` prop and use that instead of the hidden field.
+
+You can do this in your change handler e.g.
+
+```js
+onChange = (value) => {
+    if (this.props.onChange) {
+        this.props.onChange(value)
+    }
+
+    this.setState({
+        value: value,
+    })
+};
+```
+
+Then just make sure your hidden input doesn't render e.g.
+
+```js
+{ !this.props.onChange && <input
+    name={ this.props.name }
+    value={ this.state.value }
+    type="hidden"
+/> }
+```
+
+#### Register your component
+
+Depending on your setup, the below might change - however for example purposes we'll assume you're using Mix.
+
+Firstly you'll need to make sure you've got a javascript file to load your custom code into, include it in the page and compile it e.g.
+
+1. Create `resources/js/my-maelstrom.js`
+2. Import the component registry
+4. Register your component
+
+```js
+// my-maelstrom.js
+
+import Registry from '@maelstrom/support/Registry'
+import MyComponent from './MyCustomInput.js'
+
+Registry.register({
+    MyCustomInput: MyComponent,
+});
+```
+
+Now you'll need to compile your JS e.g.
+
+```js
+// webpack.mix.js
+
+mix.react('resources/js/my-maelstrom.js', 'public/js')
+```
+
+Once your code is compiling you need to include it within your `config/maelstrom.php` e.g.
+
+```php
+'custom_js' => [
+    'js/my-maelstrom.js',
+],
+```
+
+Once you've confirmed your JS is included on the page you can render your component by either creating an include, or directly referencing it via a `data-component` attribute using the name you defined whilst registering it e.g.
+
+```php
+// my-custom-input.blade.php
+
+@php
+    // Loads the entry to get saved data from.
+    $entry = isset($entry) ? $entry : maelstrom()->getEntry();
+@endphp
+
+<div
+    data-component="MyCustomInput" // This binds this input to your component
+    id="{{ $name }}_field" // A unique ID for your field, this gets used by the Switch input to toggle visibility.
+    data-value="{{ old($name, data_get($entry, $name, ($default ?? null))) }}" // Provides the input value to the component, taking from either the post data, the model, or a default value.
+    data-label="{{ $label ?? $name }}" // The label that is displayed on the field.
+    data-name="{{ $name }}" // The name that is posted e.g. `$_POST['field_name']`.
+    data-help="{{ $help ?? null }}" // Help text to display under the input.
+    data-error="{{ $errors->first($name) }}" // Validation message to display.
+    data-required="{{ bool_to_string($required ?? false) }}" // Defines if its required.
+></div>
+```
+
+#### Use it!
+
+```php
+@include('my-custom-input', [
+    'name' => 'page_title',
+    'label' => 'Page Title',
+    'required' => true,
+])
+```
+
+Obviously you can create the inputs however you like, however this example just shows how we've created all the default ones.
