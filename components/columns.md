@@ -2,7 +2,7 @@
 pageClass: big-toc
 ---
 
-# Columns
+# ⚒ Columns
 
 [[toc]]
 
@@ -156,3 +156,5 @@ The media manager column allows you to display 1 or more thumbnails for some upl
     'max_items' => 3,
 ]
 ```
+
+## Custom Columns

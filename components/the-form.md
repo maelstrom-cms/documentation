@@ -81,3 +81,13 @@ Once you've got your `<form>` you're able to use our blade includes (along with 
 
 @endcomponent
 ```
+
+### The Form Controls
+
+We provide some simple form controls, which allow you to save, delete and restore entries, there's nothing really special about this component, so you can create your own save buttons if you like.
+
+When you extend the `maelstrom::layouts.form` it will automatically place them in the `buttons` slot, however if you need to manually include them you can do so with:
+
+```php
+@include('maelstrom::buttons.form-controls')
+```
