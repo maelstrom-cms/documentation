@@ -34,7 +34,7 @@ rm -f babel.config.js && \
 php artisan vendor:publish --tag=maelstrom-stubs && \
 php artisan vendor:publish --tag=maelstrom-config && \
 npm run dev && \
-php artisan db:migrate
+php artisan migrate
 ```
 
 This should have dangerously created some boilerplate for you so you can get started straight away.
@@ -167,7 +167,7 @@ php artisan vendor:publish --tag maelstrom-config
 If you're going to use the Media Manager then you'll need to run the migrations.
 
 ```sh
-php artisan db:migrate
+php artisan migrate
 ```
 
 ## Adding to existing project
