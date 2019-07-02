@@ -12,7 +12,7 @@ To save things, you'll need an Eloquent model.
 You can set this up however you like, a really basic one could be created with something like...
 
 ```sh
-php artisan create:model Page -m 
+php artisan make:model Page -m 
 ```
 
 The only requirement for models (if you want to use the update/store helpers) is that you define all your editable fields within the `fillable` property, as we use `Page::getFillable()` for mapping.
@@ -37,7 +37,7 @@ Maelstrom allows you to use any sort of controller, however when creating a CRUD
 You can create this where ever and however you like, we normally just use the artisan command, something like below will be okay!
 
 ```sh
-php artisan create:controller Admin\\PageController -r -m Page
+php artisan make:controller Admin\\PageController -r -m Page
 ```
 
 You will then need to flesh out your controller, using our panel helpers.
@@ -53,7 +53,7 @@ class PageController extends Controller
     
     public function __construct()
     {
-        $this->panel = maelstrom(Page::class)
+        $this->panel = maelstrom(Page::class);
     }
     
     //... Other methods omitted for demo purposes.
@@ -177,7 +177,7 @@ public function edit(Page $page)
     ]);
     
     // Using Helpers
-    return $this->panel->edit('pages.update');
+    return $this->panel->edit('admin.pages-form');
 }
 ```
 
@@ -218,17 +218,17 @@ public function destroy(Page $page)
     
     // Using Helpers
     $this->panel->setEntry($page);
-    $this->panel->destory('Success message!');
+    $this->panel->destroy('Success message!');
     
     return $this->panel->redirect('index');
 }
 ```
 
 ::: tip
-If your model uses `SoftDeletes` then you'll be able to use the `destory()` method to toggle it's state. e.g.
+If your model uses `SoftDeletes` then you'll be able to use the `destroy()` method to toggle it's state. e.g.
 :::
 
-If you pass through a model through `destory()` various times, if it uses the `SoftDelete` trait it will check if it's already trashed, if it is, then it will restore it.
+If you pass through a model through `destroy()` various times, if it uses the `SoftDelete` trait it will check if it's already trashed, if it is, then it will restore it.
 
 We can check the state of the model and provide a suitable success message and redirect location.
 
@@ -239,7 +239,7 @@ public function destroy(Page $page)
     
     $message = $page->trashed() ? 'Page restored' : 'Page deleted';
     
-    $this->panel->destory($message);
+    $this->panel->destroy($message);
     
     return $this->panel->redirect($page->exists() ? 'edit' : 'index');
 }
@@ -273,7 +273,7 @@ We provide an additional property for `type` and this takes the name of one of o
 @section('buttons')
 
     @include('maelstrom::buttons.button', [
-        'href' => route('pages.create'),
+        'url' => route('pages.create'),
         'label' => 'Create Page'
     ])
     
@@ -345,7 +345,7 @@ There are many many options for creating forms which you can read about in our o
     ])
     
         @include('maelstrom::inputs.text', [
-            'name' => 'post_name',
+            'name' => 'name',
             'label' => 'Post Name',
             'required' => true,
         ])
@@ -363,14 +363,14 @@ There are many many options for creating forms which you can read about in our o
             'required' => true,
         ])
         
-        @include('maelstrom::inputs.switch', [
-            'name' => 'is_featured',
-            'label' => 'Featured on Homepage?',
+        @include('maelstrom::inputs.tags', [
+            'name' => 'tags',
+            'label' => 'Tags',
         ])
         
         @include('maelstrom::components.media_manager', [
             'name' => 'header_image',
-            'max_items' => 1
+            'label' => 'Featured Image',
         ])
     
     @endcomponent
