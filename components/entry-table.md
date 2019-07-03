@@ -82,3 +82,16 @@ You're also able to define which bulk actions are available for this panel, to f
 ### Trash / Soft Deleted Entries
 
 There is also the ability to show deleted models, which you can read about [here.](../advance/trash.md)
+
+### Buttons
+
+You'll more than likely want to add some form of actions or buttons across the top, this can easily be done using the `buttons` slot e.g.
+
+```php
+@section('buttons')
+    @include('maelstrom::buttons.button', [
+        'url' => route('categories.create'),
+        'label' => 'Create Category'
+    ])
+@endsection
+```

@@ -6,15 +6,15 @@ Filtering can be a very complex thing, are your filters ANDs? or maybe they're O
 
 ### Frontend
 
-The filtering UI is provided by Ant Designs Table component, you define the `filters` property on your column which contains a `text` value to display to the user and a `value` which is sent to the backend for you to filter on.
+The filtering UI is provided by Ant Designs Table component, you define the `filters` property on your column which contains a `label` value to display to the user and a `value` which is sent to the backend for you to filter on.
 
 ```php
 $columns = [[
-    'title' => 'Category',
+    'label' => 'Category',
     'dataIndex' => 'category.name',
     'filters' => Category::all()->map(function ($category) {
         return [
-            'text' => $category->name,
+            'label' => $category->name,
             'value' => $category->id
         ];
     })
@@ -27,12 +27,12 @@ If you want to disallow multiple filters then use the `filterMultiple` property 
 
 ```php
 $columns = [[
-    'title' => 'Category',
+    'label' => 'Category',
     'dataIndex' => 'category.name',
     'filterMultiple' => false,
     'filters' => Category::all()->map(function ($category) {
         return [
-            'text' => $category->name,
+            'label' => $category->name,
             'value' => $category->id
         ];
     })

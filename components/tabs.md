@@ -9,13 +9,13 @@ They are controlled by blade components and nesting.
 ```php
 @component('maelstrom::components.tabs')
 
-    @component('maelstrom::components.tab', ['title' => 'First Tab'])
+    @component('maelstrom::components.tab', ['label' => 'First Tab'])
     
         // All your tabs and other content can go here.
     
     @endcomponent
     
-    @component('maelstrom::components.tab', ['title' => 'Second Tab'])
+    @component('maelstrom::components.tab', ['label' => 'Second Tab'])
         
         // All your tabs and other content can go here.
         
@@ -28,7 +28,7 @@ Each Tab takes a configuration object e.g.
 
 ```php
 $tab = [
-    'title' => 'Home', // Displays on the tab
+    'label' => 'Home', // Displays on the tab
     'id' => 'tab-1', // If not provided then Str::slug() will run on the title,
     'icon' => 'home', // To display an icon from Ant Icons
     'active' => true, // If this tab should be forced to display

@@ -10,7 +10,7 @@ pageClass: big-toc
 
 | Property   | Description                                      |
 | -          | :-                                               |
-| title      | The text that displays on the heading                 |
+| label      | The text that displays on the heading                 |
 | dataIndex | The property that stores the data to pass to the row, this can use dot notation for nested properties e.g. `category.name` |
 
 ### Optional props
@@ -47,7 +47,7 @@ You can turn columns into links, which can be useful for linking to related mode
 
 | Property   | Description                                      | Example         |
 | -          | :-                                               | :-              |
-| label      | A static text label for the link                 | Edit Page       |
+| labelText      | A static text label for the link                 | Edit Page       |
 | labelIndex | The property which holds the text value          | `category.name` |
 | dataIndex  | Where the link should go                         | `category.url`  |
 | icon       | If an Icon should display before the text        | `home`          |
@@ -55,7 +55,7 @@ You can turn columns into links, which can be useful for linking to related mode
 
 ```php
 [
-    'title' => 'Category',
+    'label' => 'Category',
     'type' => 'LinkColumn',
     'dataIndex' => 'category.url',
     'labelIndex' => 'category.name',
@@ -74,7 +74,7 @@ For usability we like to make the entry name a clickable link to take you to the
 
 ```php
 [
-    'title' => 'Name',
+    'label' => 'Name',
     'type' => 'EditLinkColumn',
     'dataIndex' => 'post_name',
 ]
@@ -90,7 +90,7 @@ When using the video input you can display a small thumbnail and link to it in t
 
 ```php
 [
-    'title' => 'Instructional Video',
+    'label' => 'Instructional Video',
     'type' => 'VideoColumn',
     'dataIndex' => 'video',
 ]
@@ -106,7 +106,7 @@ When using the image input you can display a small thumbnail and link to it to t
 
 ```php
 [
-    'title' => 'Featured Image',
+    'label' => 'Featured Image',
     'type' => 'ImageColumn',
     'dataIndex' => 'image',
 ]
@@ -122,7 +122,7 @@ Often you might want to display an icon to represent something, you can use the 
 
 ```php
 [
-    'title' => 'Type',
+    'label' => 'Type',
     'type' => 'IconColumn',
     'dataIndex' => 'type_icon',
 ]
@@ -150,7 +150,7 @@ The media manager column allows you to display 1 or more thumbnails for some upl
 
 ```php
 [
-    'title' => 'Photos',
+    'label' => 'Photos',
     'type' => 'MediaManagerColumn',
     'dataIndex' => 'photo_urls',
     'max_items' => 3,
@@ -239,7 +239,7 @@ Once you've confirmed your JS is included on the page you can render your compon
 @extends('maelstrom::layouts.index', [
     'columns' => [
         [
-            'title' => 'Page Title',
+            'label' => 'Page Title',
             'dataIndex' => 'page_title',
             'type' => 'MyCustomColumn', // The name you registered your column as.
         ],

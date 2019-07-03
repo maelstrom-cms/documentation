@@ -2,6 +2,8 @@
 
 Creating a dashboard is very straight forward, everything you need to create one is provided, you can of course use any component provided by [Ant Design](https://ant.design/components/statistic/).
 
+<img src="/dashboard-preview.jpg" class="shadow m-w-full h-auto my-4" style="width: 800px;" />
+
 You'll need a few things:
 
 - A Controller 
@@ -46,15 +48,25 @@ We provide a `maelstrom::layouts.basic` layout which allows you to populate the 
 
 ```php
 // resources/views/admin/dashboard.blade.php
-@extends('maelstrom::layouts.basic')
+@extends('maelstrom::layouts.basic', [
+    'breadcrumbs' => [
+        ['label' => 'Admin']
+    ],
+])
+
+@section('title')
+    Welcome to Maelstrom
+@endsection
 
 @section('content')
-
     <div>
         <h1>Your Dashboard</h1>
         <p>You can do anything you like here!</p>
     </div>
+@endsection
 
+@section('footer')
+    &copy; {{ date('Y') }} To My Company
 @endsection
 ```
 

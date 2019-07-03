@@ -51,7 +51,7 @@ For this template to work, you will need to pass a `$title` and an optional `$br
 
 ```php
 @extend('maelstrom::layouts.basic', [
-    'title' => 'Weekly Reports',
+    'label' => 'Weekly Reports',
     'breadcrumbs' => [
         [
             'label' => 'Reports',
@@ -82,7 +82,7 @@ class PageController
     public function __construct()
     {
         $this->panel = maelstrom(Page::class)->setTableHeadings([[
-             'title' => 'Name',
+             'label' => 'Name',
              'dataIndex' => 'name'
          ]])
     }

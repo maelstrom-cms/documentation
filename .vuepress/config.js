@@ -89,8 +89,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/examples/dashboard',
-                    '/examples/custom-pages',
-                    '/examples/blog-post',
+                    '/examples/blog',
                 ]
             }
         ]

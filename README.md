@@ -74,14 +74,14 @@ class PostController extends Controller
 @extends('maelstrom::layouts.index', [
     'columns' => [
         [
-            'title' => 'Name',
+            'label' => 'Name',
             'dataIndex' => 'post_name',
             'sorter' => true,
             'type' => 'EditLinkColumn',
             'searchable' => true,
         ],
         [
-            'title' => 'Featured',
+            'label' => 'Featured',
             'dataIndex' => 'is_featured',
             'type' => 'BooleanColumn',
             'align' => 'center',

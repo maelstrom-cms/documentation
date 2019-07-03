@@ -284,7 +284,7 @@ We provide an additional property for `type` and this takes the name of one of o
     @include('maelstrom::components.table', [
         'columns' => [
             [
-                'title' => 'Name',
+                'label' => 'Name',
                 'dataIndex' => 'page',
                 'sorter' => true,
                 'type' => 'EditLinkColumn',
@@ -308,14 +308,14 @@ public function index()
     return $this->panel->index('admin.pages-index')
     ->with('columns', [
         [
-            'title' => 'Name',
+            'label' => 'Name',
             'dataIndex' => 'colour',
             'sorter' => true,
             'type' => 'EditLinkColumn',
             'searchable' => true,
         ],
         [
-            'title' => 'Category',
+            'label' => 'Category',
             'dataIndex' => 'category.name',
             'filterMultiple' => false,
             'filters' => Category::all()->map(function ($category) {
