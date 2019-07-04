@@ -76,7 +76,7 @@ class PostController extends Controller
         [
             'label' => 'Name',
             'dataIndex' => 'post_name',
-            'sorter' => true,
+            'c' => true,
             'type' => 'EditLinkColumn',
             'searchable' => true,
         ],

@@ -847,4 +847,251 @@ Now we can tell our input field to use the form options api instead by adjusting
 ])
 ```
 
-<img src="/blog-11.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 400px;" />
+When you refresh the page now, if you inspect the network requests you'll see an API call to fetch the form options for you.
+
+<img src="/blog-11.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 600px;" />
+
+We can now go one step further and allow the user to create real-time categories by adding the `create_button` property.
+
+```bash
+@include('maelstrom::inputs.select', [
+    'label' => 'Category',
+    'name' => 'category_id',
+    'options' => [],
+    'required' => true,
+    'remote_uri' => route('maelstrom.form-options', 'categories'),
+    'create_button' => [
+        'url' => route('category.create'),
+    ],
+])
+```
+
+Done!
+
+<img src="/blog-12.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 600px;" />
+
+You should now be able to enter all your data and it should save okay!
+
+However what you might notice is that despite your `tags` saving into the database column, they are not showing up on the frontend.
+
+This is because we're just JSON encoding them and not saving them against an external table with unique IDs per tag.
+
+If we want to use free roaming tags, we can use the property `wild_values` to allow it to work without IDs
+
+```bash
+@include('maelstrom::inputs.tags', [
+    'label' => 'Tags',
+    'name' => 'tags',
+    'wild_values' => true,
+])
+```
+
+Save, give the page a refresh and you should now see your tags!
+
+```bash
+git add .
+git commit -m "Form Created"
+```
+
+### Adjusting the entry table
+
+Now we've got some data and we know it's saving okay, we can look into tweaking our entry screen with some columns, filters etc.
+
+We'll go back to our `Admin\PostController::class` and into the `index` method where we defined our column, we can flesh this out with some other fields.
+
+
+```php
+$this->panel->setTableHeadings([
+    [
+        'label' => 'Image',
+        'type' => 'MediaManagerColumn',
+        'dataIndex' => 'image',
+    ],
+    [
+        'label' => 'Name',
+        'dataIndex' => 'name',
+        'type' => 'EditLinkColumn'
+    ],
+    [
+        'label' => 'Category',
+        'dataIndex' => 'category.name',
+    ],
+    [
+        'label' => 'Sticky?',
+        'type' => 'BooleanColumn',
+        'dataIndex' => 'is_sticky',
+]);
+```
+
+As we've decided to show the `category.name` which is on the relationship, we'll need to eager load this so it's available to the view.
+
+We do this by defining it within our `__construct` e.g.
+
+```php
+public function __construct()
+{
+    $this->panel = maelstrom(Post::class)->setEagerLoad(['category']);
+}
+``` 
+
+We should now see something like the following:
+
+<img src="/blog-13.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 900px;" />
+
+We can make this a bit more useful for the user, by adding in a search, some filters etc.
+
+To start with we can mark the name field as searchable! And whilst we're at it, make the column sortable as well.
+
+```php
+[
+    'label' => 'Name',
+    'dataIndex' => 'name',
+    'type' => 'EditLinkColumn',
+    'searchable' => true,
+    'sortable' => true,
+],
+```
+
+And now we have a search component with our name field, and the ability to adjust the ordering of our posts by clicking the arrows within the column title.
+
+<img src="/blog-14.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 500px;" />
+
+We can also fix the alignment of the is sticky column by adding the `align` property.
+
+```php
+[
+    'label' => 'Sticky?',
+    'type' => 'BooleanColumn',
+    'dataIndex' => 'is_sticky',
+    'align' => 'center',
+]
+```
+
+Now we can look into creating some filters, to start with we'll setup a sticky filter.
+
+#### Creating a single select filter (radio buttons)
+
+```php
+[
+    'label' => 'Sticky?',
+    'type' => 'BooleanColumn',
+    'dataIndex' => 'is_sticky',
+    'align' => 'center',
+    'filterMultiple' => false,
+    'filters' => [
+        ['label' => 'Yes', 'value' => 1],
+        ['label' => 'No', 'value' => 0],
+    ],
+],
+```
+
+We've added the `filterMultiple` and turned it off, as we want a radio button configuration rather than multiple checkboxes, along with the `filters` array providing the `label` and `value` for each of the filters.
+
+<img src="/blog-15.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 250px;" />
+
+Right now the filter wont do anything until we set up some logic to adjust the executed query.
+
+We can do this using the `setFilterHandler()` method which provides us the applied filters and the query builder.
+
+For demo purposes we'll do this inline within the construct e.g.
+
+```php
+public function __construct()
+{
+    $this->panel = maelstrom(Post::class)
+        ->setEagerLoad([
+            'category'
+        ])
+        ->setFilterHandler(function ($filters, $query) {
+            if (isset($filters->is_sticky)) {
+                $query->where('is_sticky', current($filters->is_sticky));
+            }
+        });
+}
+```
+
+Within the closure of the `setFilterHandler` we check if the `is_sticky` filter has been set, and if it has we add an additional constraint to our query via the `where` method.
+
+As you can have multiple filters, you will get given an array of attached filters, so we use `current($filters->is_sticky)` to get the first item, you could always use `$filters->is_sticky[0]` etc...
+
+You should now be able to test your filter and see the results change.
+
+#### Creating a multiple select filter (checkboxes)
+
+Lastly we'll create another filter for the categories, this will allow multiple to be selected.
+
+To do this, we'll need a list of our categories, you could create a helper to return this data e.g. `Category::forFilters()` but for this demo, we'll do it inline.
+
+```php
+[
+    'label' => 'Category',
+    'dataIndex' => 'category.name',
+    'filters' => Category::all()->map(function (Category $category){
+        return [
+            'label' => $category->name,
+            'value' => $category->getKey(),
+        ];
+    }),
+],
+```
+
+<img src="/blog-16.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 300px;" />
+
+Then we'll need to create our filter logic, which is a little more complicated.
+
+```php
+->setFilterHandler(function ($filters, $query) {
+
+    // Handles the Sticky filter
+    if (isset($filters->is_sticky)) {
+        $query->where('is_sticky', current($filters->is_sticky));
+    }
+    
+    // Adds a new condition which shows categories
+    // only from the selected ones - must be a nested condition
+    // to make it work with any other filters.
+    if (isset($filters->{'category.name'})) {
+        $query->where(function ($query) use ($filters) {
+            foreach ($filters->{'category.name'} as $id) {
+                $query->orWhere('category_id', $id);
+            }
+        });
+    }
+})
+```
+
+As we want it to work with any other previously applied filters, instead of using `where` directly, you pass it a closure which will nest the wheres.
+
+Refresh, try out your filters and they should now be working as expected!
+
+#### Transforming data for the table.
+
+The final thing we'll do before we're done, is display the tags on the entry screen, as this is a JSON object, we'll need to transform the data before it gets to the view otherwise it will look like `["tag x", "tag y"]`.
+
+<img src="/blog-17.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 250px;" />
+
+You'll often use this technique to manipulate the data before displaying it to the user.
+
+Still within our construct, we can call the `setEntriesTransformer` method to modify our data before it hits the view.
+
+```php
+public function __construct()
+{
+    $this->panel->setEntriesTransformer(function (Post $post) {
+        $post = $post->toArray();
+        $post['tags'] = implode(', ', $post['tags']);
+    
+        return $post;
+    });
+}
+``` 
+
+Then we should see our transformed data instead!
+
+<img src="/blog-18.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 250px;" />
+
+### The End!
+
+And there we have it, you have a super straight forward to understand backend to handle basic blog posts with categories and tags!
+
+Any questions then please get in contact with [talk@maelstrom-cms.com](mailto:talk@maelstrom-cms.com)

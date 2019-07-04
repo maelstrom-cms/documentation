@@ -44,3 +44,9 @@ There are a few times when Maelstrom will not be appropriate for your project e.
 - If you need a flexible system which comes bundles with tonnes prebuilt UI components, widgets, plugins etc [(Checkout Backpack)](https://backpackforlaravel.com/)..
 - If you don't want to use React.
 - You don't have the time to create your own layouts.
+
+Any questions then please get in contact with [talk@maelstrom-cms.com](mailto:talk@maelstrom-cms.com)
+
+## Questions and Support
+
+You can email [talk@maelstrom-cms.com](mailto:talk@maelstrom-cms.com) for questions, however if you need code support 

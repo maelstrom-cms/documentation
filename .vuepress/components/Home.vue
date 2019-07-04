@@ -142,6 +142,15 @@
                     <a class="mt-4 gumroad-button" href="https://gum.co/maelstrom" target="_blank">Pay what you want.</a>
                 </section>
 
+                <section>
+                    <h2>Support</h2>
+                    <ul>
+                        <li><a href="https://github.com/maelstrom-cms/toolkit/issues/new?assignees=OwenMelbz&amp;labels=bug%2C+triage&amp;template=bug_report.md&amp;title=%5BBug%5D+">Report Bug</a></li>
+                        <li><a href="https://github.com/maelstrom-cms/toolkit/issues/new?assignees=OwenMelbz&amp;labels=question&amp;template=question.md&amp;title=%5BQuestion%5D+">Ask a Question</a></li>
+                        <li><a href="mailto:talk@maelstrom-cms.com">Email Us</a></li>
+                    </ul>
+                </section>
+
             </div>
         </div>
 

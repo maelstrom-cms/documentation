@@ -286,7 +286,7 @@ We provide an additional property for `type` and this takes the name of one of o
             [
                 'label' => 'Name',
                 'dataIndex' => 'page',
-                'sorter' => true,
+                'sortable' => true,
                 'type' => 'EditLinkColumn',
                 'searchable' => true,
             ],
@@ -310,7 +310,7 @@ public function index()
         [
             'label' => 'Name',
             'dataIndex' => 'colour',
-            'sorter' => true,
+            'sortable' => true,
             'type' => 'EditLinkColumn',
             'searchable' => true,
         ],

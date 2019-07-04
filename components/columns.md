@@ -18,7 +18,7 @@ pageClass: big-toc
 | Property   | Description                                      |
 | -          | :-                                               |
 | type | Pass in the name of a column type e.g. `BooleanColumn` or even a custom column. |
-| sorter | Enables the sorting button on the heading e.g. `'sorter' => true`. |
+| sortable | Enables the sorting button on the heading e.g. `'sortable' => true`. |
 | filters | An array of `text` / `value` to make the heading filterable - find out more in the [filtering docs.](../advance/filtering.md) |
 | filterMultiple | If the filter has multiple options. |
 | align | Text alignment of the content. |
