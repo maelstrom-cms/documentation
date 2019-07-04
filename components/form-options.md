@@ -66,7 +66,7 @@ By default all form inputs which support remote data will use the original `opti
 
 This means your select menu might look something like this.
 
-```php
+```bash
 @include('maelstrom::inputs.select', [
     'name' => 'lemonade_recipes',
     'label' => 'Lemonade Recipes',

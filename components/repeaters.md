@@ -40,7 +40,7 @@ This takes a list of other fields, they take the same properties as the blade di
 
 The `component` field takes the name of the blade include for the input. e.g.
 
-```php
+```bash
 @include('maelstrom::inputs.text', [
     'name' => 'title',
     'label' => 'Page Title',
@@ -57,7 +57,7 @@ The `component` field takes the name of the blade include for the input. e.g.
 
 #### Example 
 
-```php
+```bash
 @include('maelstrom::components.repeater', [
     'name' => 'members',
     'max_items' => 5,

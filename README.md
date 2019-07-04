@@ -69,15 +69,15 @@ class PostController extends Controller
 }
 ```
 
-```php
+```bash
 // posts.index.blade.php
 @extends('maelstrom::layouts.index', [
     'columns' => [
         [
             'label' => 'Name',
             'dataIndex' => 'post_name',
-            'c' => true,
             'type' => 'EditLinkColumn',
+            'sortable' => true,
             'searchable' => true,
         ],
         [
@@ -90,7 +90,7 @@ class PostController extends Controller
 ])
 ```
 
-```php
+```bash
 // posts.form.blade.php
 @extends('maelstrom::layouts.form')
 
@@ -101,30 +101,31 @@ class PostController extends Controller
     ])
     
         @include('maelstrom::inputs.text', [
-            'name' => 'post_name',
             'label' => 'Post Name',
+            'name' => 'post_name',
             'required' => true,
         ])
         
         @include('maelstrom::inputs.text', [
-            'name' => 'slug',
             'label' => 'Post Slug',
+            'name' => 'slug',
             'required' => true,
             'html_type' => 'url',
         ])
         
         @include('maelstrom::inputs.wysiwyg', [
-            'name' => 'body',
             'label' => 'Post Body',
+            'name' => 'body',
             'required' => true,
         ])
         
         @include('maelstrom::inputs.switch', [
-            'name' => 'is_featured',
             'label' => 'Featured on Homepage?',
+            'name' => 'is_featured',
         ])
         
         @include('maelstrom::components.media_manager', [
+            'label' => 'Header Image',
             'name' => 'header_image',
             'max_items' => 1
         ])

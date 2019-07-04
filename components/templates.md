@@ -18,7 +18,7 @@ This acts as a generic framework which includes various smaller components such 
 
 If you're extending this layout, you're able to populate the content area by pushing a section to the `main` slot e.g.
 
-```php
+```bash
 @extend('maelstrom::layouts.wrapper')
 
 @section('main')
@@ -49,7 +49,7 @@ For this template to work, you will need to pass a `$title` and an optional `$br
 - The `$title` should just be a string which will act as the page title and heading 1
 - The `$breadcrumbs` should follow the same set up as described within our [documentation.](./breadcrumbs.md)
 
-```php
+```bash
 @extend('maelstrom::layouts.basic', [
     'label' => 'Weekly Reports',
     'breadcrumbs' => [
@@ -101,7 +101,7 @@ class PageController
 }
 ```
 
-```php
+```bash
 // admin/pages-index.blade.php
 @extends('maelstrom::layouts.index')
 
@@ -127,7 +127,7 @@ It does have some additional slots which can be used for some basic use cases.
 
 Once you've got your template extending the `maelstrom::layouts.form` template you will still need to use the `content` slot and pass in the [form component.](./the-form.md)
 
-```php
+```bash
 @extend('maelstrom::layouts.form')
 
 @section('content')

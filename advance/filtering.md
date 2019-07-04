@@ -52,11 +52,9 @@ You can define a filter handler using the `setFilterHandler` method which when e
 You can either do the filtering inline, or maybe defer it to another method.
 
 ```php
-
 $this->panel->setFilterHandler(function ($appliedFilters, $queryBuilder, $request) {
     return PageService::filterQuery($appliedFilters, $queryBuilder);
 });
-
 ```
 
 You can then manipulate the query to adjust your results.

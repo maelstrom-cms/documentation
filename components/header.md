@@ -22,7 +22,7 @@ It's likely if you want to add more things up here.
 
 You have the option to either publish the view and make your modifications, however we provide 2 stacks which you can push additional items to
 
-```php
+```bash
 
 @push('nav_before')
 

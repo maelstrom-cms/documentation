@@ -30,7 +30,7 @@ It manifests itself in the form of a button which when clicked opens the manager
 
 Including the media manager button in your form is the same as any other fields
 
-```php
+```bash
 @include('maelstrom::components.media_manager', [
     'name' => 'supporting_images',
     'label' => 'Supporting Images',

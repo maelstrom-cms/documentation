@@ -87,7 +87,7 @@ There is also the ability to show deleted models, which you can read about [here
 
 You'll more than likely want to add some form of actions or buttons across the top, this can easily be done using the `buttons` slot e.g.
 
-```php
+```bash
 @section('buttons')
     @include('maelstrom::buttons.button', [
         'url' => route('categories.create'),

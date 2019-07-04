@@ -76,7 +76,7 @@ The structure for the `bulk_actions` object has 3 optional properties
 - **route** (you can pass the bulk actions URL right in here)
 - **actions** (an array, with the key being the `action` value and the value being the text label)
 
-```php
+```bash
 @section('content')
     @include('maelstrom::components.table', [
         'bulk_actions' => [

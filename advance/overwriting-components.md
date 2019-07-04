@@ -10,7 +10,7 @@ We use the the methods described on the [Laravel Docs](https://laravel.com/docs/
 
 This means if you use a blade directive e.g.
 
-```php
+```bash
 @include('maelstrom::inputs.text')
 ```
 
@@ -28,7 +28,7 @@ You can find all existing blade templates in the root directory of `/vendor/mael
 
 You can find out the name of a component by opening the blade file e.g. if you want to change the text input component you can find
 
-```php
+```bash
 @include('maelstrom::inputs.text', [
     'name' => 'Original Field'
 ])

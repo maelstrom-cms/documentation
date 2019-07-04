@@ -41,7 +41,7 @@ Make sure you've added your custom javascript path to `config/maelstrom.php`
 
 You'll want to be able to include your component within your blade templates, so we'll create an include which you can reference e.g.
 
-```php
+```bash
 @include('my-components.currency')
 ```
 
@@ -49,7 +49,7 @@ Then you'll need your file itself e.g. `resources/views/my-components/currency.b
 
 The anatomy is fairly straight forward, you provide a `div` that has several properties attached, below is a list of recommended props and how to get them, however you can do this however you see fit.
 
-```php
+```bash
 @php $entry = $entry ?? maelstrom()->getEntry(); @endphp
 
 <div

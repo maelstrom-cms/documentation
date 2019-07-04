@@ -6,7 +6,7 @@ Tabs are a super helpful way to minimise the amount of data shown at any one tim
 
 They are controlled by blade components and nesting.
 
-```php
+```bash
 @component('maelstrom::components.tabs')
 
     @component('maelstrom::components.tab', ['label' => 'First Tab'])
@@ -61,7 +61,7 @@ This means if you've used PHP to set the active tab to "tab 2" but the URL has g
 
 By default the tabs run horizontally however you can pass in `$direction` of either `horizontal` or `vertical` e.g.
 
-```php
+```bash
 @component('maelstrom::components.tabs', [
     'direction' => 'vertical',
 ])

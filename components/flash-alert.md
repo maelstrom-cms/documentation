@@ -14,7 +14,7 @@ We have 4 styles to choose from:
 - `warning`
 - `error`
 
-```php
+```bash
 @include('maelstrom::components.alert', [
     'message' => 'the message to display to the user',
     'style' => 'info',
