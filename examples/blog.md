@@ -17,6 +17,9 @@ php artisan make:auth
 php artisan storage:link
 npm install
 npm run dev
+git init
+git add .
+git commit -m "Clean Laravel Install"
 ```
 
 This should get you setup with a clean Laravel installation, you'll now need to edit the `.env` to update your settings.
@@ -37,6 +40,8 @@ php artisan vendor:publish --tag=maelstrom-stubs
 php artisan vendor:publish --tag=maelstrom-config
 npm run dev
 php artisan migrate
+git add .
+git commit -m "Added Maelstrom"
 ```
 
 You can confirm Maelstrom is installed by typing `php artisan route:list | grep "maelstrom"` and you should see some routes.
@@ -101,6 +106,11 @@ class Post extends Model
 {
     use SoftDeletes;
 }
+```
+
+```bash
+git add .
+git commit -m "Added Models"
 ```
 
 We can now run these migrations with `php artisan migrate`
@@ -279,6 +289,11 @@ class CategoryController extends Controller
 }
 ```
 
+```bash
+git add .
+git commit -m "Added Routes and Controller"
+```
+
 #### Our Views
 Before this will work, we'll also need to create some views for our `index` and `form`, picking a simple convention will help keep this cleaner, I quite like the below.
 
@@ -378,6 +393,11 @@ When you access the item from the trash you can also restore it from the edit fo
 
 <img src="/blog-5.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 800px;" />
 
+```bash
+git add .
+git commit -m "Added Views"
+```
+
 #### Creating a Sidebar
 
 Before this panel is complete, we'll need to add it to the sidebar, we can do this from the `AppServiceProvider.php`.
@@ -409,6 +429,11 @@ public function boot()
 You should now see your sidebar!
 
 <img src="/blog-6.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 800px;" />
+
+```bash
+git add .
+git commit -m "Added Sidebar"
+```
 
 ### Creating a Post Panel
 
@@ -500,7 +525,7 @@ class PostController extends Controller
                 'searchable' => true,
                 'sortable' => true,
                 'type' => 'EditLinkColumn'
-            ]
+            ],
         ]);
 
         return $this->panel->index('admin.post-index');
@@ -527,6 +552,10 @@ class PostController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'image' => 'required|numeric',
+            'body' => 'required|max:1000',
+            'category_id' => 'required|numeric',
         ]);
 
         $this->panel->store($request->get('name') . ' has been created!');
@@ -569,7 +598,11 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+            'image' => 'required|numeric',
+            'body' => 'required|max:1000',
+            'category_id' => 'required|numeric',
         ]);
 
         $this->panel->setEntry($post);
@@ -611,6 +644,7 @@ class PostController extends Controller
         return $this->panel->redirect('index');
     }
 }
+
 ```
 
 Create our views
@@ -678,11 +712,139 @@ class Post extends Model
     {
         return $this->belongsTo(Media::class, 'image');
     }
-
-    public function getFeaturedImageUrlAttribute()
-    {
-        return optional($this->featuredImage)->cached_thumbnail_url;
-    }
-
 }
 ```
+
+Now we've got our model, our controller and index we should again see something like:
+
+<img src="/blog-7.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 800px;" />
+
+If we edit our `post-form.blade.php` form and add the basic form components we should get something we can work with!
+
+```bash
+@extends('maelstrom::layouts.form')
+
+@section('content')
+
+    @component('maelstrom::components.form', [
+        'action' => $action,
+        'method' => $method,
+    ])
+
+    @endcomponent
+
+@endsection
+```
+
+<img src="/blog-8.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 800px;" />
+
+Now we can start to flesh our our form with:
+
+- Post Name *(text)*
+- URL Slug *(text)*
+- Featured Image *(media manager)*
+- Is Sticky? *(toggle switch)*
+- Body Content *(wysiwyg)*
+- Category *(select menu)*
+- Tags *(tagger)*
+
+```bash
+@extends('maelstrom::layouts.form')
+
+@section('content')
+
+    @component('maelstrom::components.form', [
+        'action' => $action,
+        'method' => $method,
+    ])
+
+        @include('maelstrom::inputs.text', [
+            'label' => 'Post Name',
+            'name' => 'name',
+            'required' => true,
+        ])
+
+        @include('maelstrom::inputs.text', [
+            'label' => 'URL Slug',
+            'name' => 'slug',
+            'required' => true,
+        ])
+
+        @include('maelstrom::components.media_manager', [
+            'label' => 'Featured Image',
+            'name' => 'image',
+            'required' => true,
+        ])
+
+        @include('maelstrom::inputs.switch', [
+            'label' => 'Is Sticky?',
+            'name' => 'is_sticky',
+        ])
+
+        @include('maelstrom::inputs.wysiwyg', [
+           'label' => 'Body Content',
+           'name' => 'body',
+           'required' => true,
+       ])
+
+        <div class="flex flex-wrap">
+            <div class="w-1/2 pr-10">
+            
+                @include('maelstrom::inputs.select', [
+                    'label' => 'Category',
+                    'name' => 'category_id',
+                    'options' => [],
+                    'required' => true,
+                ])
+                
+            </div>
+            <div class="w-1/2">
+            
+                @include('maelstrom::inputs.tags', [
+                    'label' => 'Tags',
+                    'name' => 'tags',
+                ])
+                
+            </div>
+        </div>
+
+    @endcomponent
+
+@endsection
+```
+
+This should give us a good looking form!
+
+<img src="/blog-9.jpg" class="shadow m-w-full h-auto mt-2 my-4" style="width: 800px;" />
+
+However you'll notice that the Category dropdown is empty. This is because we've not given it any `options`.
+
+<img src="/blog-10.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 400px;" />
+
+For this example we'll use the [Form Options API](../components/form-options.md) and edit our `config/maelstrom.php` to add in our `Category::class`
+
+So within our `form_options` area within the config we'll add a new model e.g.
+
+```php
+'models' => [
+    'categories' => [
+        'model' => App\Category::class,
+        'value' => 'id',
+        'label' => 'name',
+    ],
+],
+```
+
+Now we can tell our input field to use the form options api instead by adjusting the `@include`
+
+```bash
+@include('maelstrom::inputs.select', [
+    'label' => 'Category',
+    'name' => 'category_id',
+    'options' => [],
+    'required' => true,
+    'remote_uri' => route('maelstrom.form-options', 'categories'),
+])
+```
+
+<img src="/blog-11.jpg" class="m-w-full h-auto mt-2 my-4" style="width: 400px;" />
