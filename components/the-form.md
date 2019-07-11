@@ -91,3 +91,20 @@ When you extend the `maelstrom::layouts.form` it will automatically place them i
 ```php
 @include('maelstrom::buttons.form-controls')
 ```
+
+### Blank Template
+
+```bash
+@extends('maelstrom::layouts.form')
+
+@section('content')
+
+    @component('maelstrom::components.form', [
+        'action' => $action,
+        'method' => $method,
+    ])
+
+    @endcomponent
+
+@endsection
+```

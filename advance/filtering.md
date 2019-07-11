@@ -11,7 +11,7 @@ The filtering UI is provided by Ant Designs Table component, you define the `fil
 ```php
 $columns = [[
     'label' => 'Category',
-    'dataIndex' => 'category.name',
+    'name' => 'category.name',
     'filters' => Category::all()->map(function ($category) {
         return [
             'label' => $category->name,
@@ -28,7 +28,7 @@ If you want to disallow multiple filters then use the `filterMultiple` property 
 ```php
 $columns = [[
     'label' => 'Category',
-    'dataIndex' => 'category.name',
+    'name' => 'category.name',
     'filterMultiple' => false,
     'filters' => Category::all()->map(function ($category) {
         return [

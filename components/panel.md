@@ -169,6 +169,17 @@ public $beforeSave;
 public $entriesTransformer = null;
 
 /**
+ * Sometimes a full entry transformer is overkill, and you just want some
+ * extra attributes added before the view is rendered, this is useful if you have
+ * accessors that you want to add to the serialisation process e.g.
+ *
+ * $category->post_count = $category->posts->count();
+ *
+ * @var array
+ */
+public $with = [];
+
+/**
  * Any names of relationships defined here will be eager loaded
  * on the index page. e.g. $panel->setEagerLoad(['categories', 'tags'])
  *
@@ -535,6 +546,15 @@ public function getEntryName(): ?string
 public function getEntries(): LengthAwarePaginator
 
 /**
+ * The straight forward getter to return the defined eager loaded relationships from setEagerLoad.
+ *
+ * Everything stored within here will get attached to the getEntries query.
+ *
+ * @return array
+ */
+public function getEagerLoad(): array
+
+/**
  * The straight forward getter to return the defined relationships from setRelationships.
  *
  * Everything stored within here will get mapped up during "handleRelationships()"
@@ -572,6 +592,14 @@ public function getRoutes($entry = 'placeholder'): array
  * @return array
  */
 public function getFillableData(): array
+
+/**
+ * The straight forward getter to return the defined
+ * attributes to append from setWithAttributes();
+ *
+ * @return array
+ */
+public function getWithAttributes(): array
 
 /**
  * Returns back the configuration mapping provided by "setUploadables()"

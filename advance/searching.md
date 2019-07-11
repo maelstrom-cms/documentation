@@ -18,7 +18,7 @@ To mark a column as searchable, set the `searchable` property to `true` e.g.
 ```php
 $columns = [[
     'label' => 'Post Name',
-    'dataIndex' => 'name',
+    'name' => 'name',
     'searchable' => true,
 ]];
 ```

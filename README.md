@@ -75,14 +75,14 @@ class PostController extends Controller
     'columns' => [
         [
             'label' => 'Name',
-            'dataIndex' => 'post_name',
+            'name' => 'post_name',
             'type' => 'EditLinkColumn',
             'sortable' => true,
             'searchable' => true,
         ],
         [
             'label' => 'Featured',
-            'dataIndex' => 'is_featured',
+            'name' => 'is_featured',
             'type' => 'BooleanColumn',
             'align' => 'center',
         ],

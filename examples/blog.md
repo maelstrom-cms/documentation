@@ -173,10 +173,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $this->panel->setTableHeadings([
+        $this->panel->nameHeadings([
             [
                 'label' => 'Name',
-                'dataIndex' => 'name',
+                'name' => 'name',
                 'searchable' => true,
                 'sortable' => true,
                 'type' => 'EditLinkColumn'
@@ -525,7 +525,7 @@ class PostController extends Controller
         $this->panel->setTableHeadings([
             [
                 'label' => 'Name',
-                'dataIndex' => 'name',
+                'name' => 'name',
                 'searchable' => true,
                 'sortable' => true,
                 'type' => 'EditLinkColumn'
@@ -909,21 +909,21 @@ $this->panel->setTableHeadings([
     [
         'label' => 'Image',
         'type' => 'MediaManagerColumn',
-        'dataIndex' => 'image',
+        'name' => 'image',
     ],
     [
         'label' => 'Name',
-        'dataIndex' => 'name',
+        'name' => 'name',
         'type' => 'EditLinkColumn'
     ],
     [
         'label' => 'Category',
-        'dataIndex' => 'category.name',
+        'name' => 'category.name',
     ],
     [
         'label' => 'Sticky?',
         'type' => 'BooleanColumn',
-        'dataIndex' => 'is_sticky',
+        'name' => 'is_sticky',
 ]);
 ```
 
@@ -949,7 +949,7 @@ To start with we can mark the name field as searchable! And whilst we're at it, 
 ```php
 [
     'label' => 'Name',
-    'dataIndex' => 'name',
+    'name' => 'name',
     'type' => 'EditLinkColumn',
     'searchable' => true,
     'sortable' => true,
@@ -966,7 +966,7 @@ We can also fix the alignment of the is sticky column by adding the `align` prop
 [
     'label' => 'Sticky?',
     'type' => 'BooleanColumn',
-    'dataIndex' => 'is_sticky',
+    'name' => 'is_sticky',
     'align' => 'center',
 ]
 ```
@@ -979,7 +979,7 @@ Now we can look into creating some filters, to start with we'll setup a sticky f
 [
     'label' => 'Sticky?',
     'type' => 'BooleanColumn',
-    'dataIndex' => 'is_sticky',
+    'name' => 'is_sticky',
     'align' => 'center',
     'filterMultiple' => false,
     'filters' => [
@@ -1029,7 +1029,7 @@ To do this, we'll need a list of our categories, you could create a helper to re
 ```php
 [
     'label' => 'Category',
-    'dataIndex' => 'category.name',
+    'name' => 'category.name',
     'filters' => Category::all()->map(function (Category $category){
         return [
             'label' => $category->name,

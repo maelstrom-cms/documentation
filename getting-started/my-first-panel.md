@@ -285,7 +285,7 @@ We provide an additional property for `type` and this takes the name of one of o
         'columns' => [
             [
                 'label' => 'Name',
-                'dataIndex' => 'page',
+                'name' => 'page',
                 'sortable' => true,
                 'type' => 'EditLinkColumn',
                 'searchable' => true,
@@ -309,14 +309,14 @@ public function index()
     ->with('columns', [
         [
             'label' => 'Name',
-            'dataIndex' => 'colour',
+            'name' => 'colour',
             'sortable' => true,
             'type' => 'EditLinkColumn',
             'searchable' => true,
         ],
         [
             'label' => 'Category',
-            'dataIndex' => 'category.name',
+            'name' => 'category.name',
             'filterMultiple' => false,
             'filters' => Category::all()->map(function ($category) {
                 return [

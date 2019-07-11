@@ -46,12 +46,8 @@ This template extends the `maelstrom::layouts.wrapper` which uses the `main` slo
 
 For this template to work, you will need to pass a `$title` and an optional `$breadcrumbs`.
 
-- The `$title` should just be a string which will act as the page title and heading 1
-- The `$breadcrumbs` should follow the same set up as described within our [documentation.](./breadcrumbs.md)
-
 ```bash
 @extend('maelstrom::layouts.basic', [
-    'label' => 'Weekly Reports',
     'breadcrumbs' => [
         [
             'label' => 'Reports',
@@ -62,7 +58,15 @@ For this template to work, you will need to pass a `$title` and an optional `$br
         ],
     ]
 ])
+
+@section('title')
+    Weekly Reports
+@endsection
 ```
+
+::: warning
+You must provide a `title` before the breadcrumbs will appear.
+:::
 
 ### Index
 
@@ -83,7 +87,7 @@ class PageController
     {
         $this->panel = maelstrom(Page::class)->setTableHeadings([[
              'label' => 'Name',
-             'dataIndex' => 'name'
+             'name' => 'name'
          ]])
     }
     

@@ -95,3 +95,16 @@ You'll more than likely want to add some form of actions or buttons across the t
     ])
 @endsection
 ```
+
+### Blank Template
+
+```bash
+@extends('maelstrom::layouts.index')
+
+@section('buttons')
+    @include('maelstrom::buttons.button', [
+        'url' => route('tags.create'),
+        'label' => 'Create Tag'
+    ])
+@endsection
+```

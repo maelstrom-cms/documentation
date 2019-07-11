@@ -11,7 +11,7 @@ pageClass: big-toc
 | Property   | Description                                      |
 | -          | :-                                               |
 | label      | The text that displays on the heading                 |
-| dataIndex | The property that stores the data to pass to the row, this can use dot notation for nested properties e.g. `category.name` |
+| name | The property that stores the data to pass to the row, this can use dot notation for nested properties e.g. `category.name` |
 
 ### Optional props
 
@@ -49,7 +49,7 @@ You can turn columns into links, which can be useful for linking to related mode
 | -          | :-                                               | :-              |
 | labelText      | A static text label for the link                 | Edit Page       |
 | labelIndex | The property which holds the text value          | `category.name` |
-| dataIndex  | Where the link should go                         | `category.url`  |
+| name  | Where the link should go                         | `category.url`  |
 | icon       | If an Icon should display before the text        | `home`          |
 | newTab     | If should open in a new tab (defaults to `true`) | `false`         |
 
@@ -57,7 +57,7 @@ You can turn columns into links, which can be useful for linking to related mode
 [
     'label' => 'Category',
     'type' => 'LinkColumn',
-    'dataIndex' => 'category.url',
+    'name' => 'category.url',
     'labelIndex' => 'category.name',
     'icon' => 'groups',
     'newTab' => true,
@@ -76,7 +76,7 @@ For usability we like to make the entry name a clickable link to take you to the
 [
     'label' => 'Name',
     'type' => 'EditLinkColumn',
-    'dataIndex' => 'post_name',
+    'name' => 'post_name',
 ]
 ```
 
@@ -92,7 +92,7 @@ When using the video input you can display a small thumbnail and link to it in t
 [
     'label' => 'Instructional Video',
     'type' => 'VideoColumn',
-    'dataIndex' => 'video',
+    'name' => 'video',
 ]
 ```
 
@@ -108,7 +108,7 @@ When using the image input you can display a small thumbnail and link to it to t
 [
     'label' => 'Featured Image',
     'type' => 'ImageColumn',
-    'dataIndex' => 'image',
+    'name' => 'image',
 ]
 ```
 
@@ -124,7 +124,7 @@ Often you might want to display an icon to represent something, you can use the 
 [
     'label' => 'Type',
     'type' => 'IconColumn',
-    'dataIndex' => 'type_icon',
+    'name' => 'type_icon',
 ]
 ```
 
@@ -152,7 +152,7 @@ The media manager column allows you to display 1 or more thumbnails for some upl
 [
     'label' => 'Photos',
     'type' => 'MediaManagerColumn',
-    'dataIndex' => 'photo_urls',
+    'name' => 'photo_urls',
     'max_items' => 3,
 ]
 ```
@@ -188,7 +188,7 @@ export default class MyColumn extends React.Component {
             return <span>-</span>
         }
         
-        // The value provided by `dataIndex` gets returned into the `props.text` field.
+        // The value provided by `name` gets returned into the `props.text` field.
         return this.props.text
     }
 }
@@ -240,7 +240,7 @@ Once you've confirmed your JS is included on the page you can render your compon
     'columns' => [
         [
             'label' => 'Page Title',
-            'dataIndex' => 'page_title',
+            'name' => 'page_title',
             'type' => 'MyCustomColumn', // The name you registered your column as.
         ],
     ],

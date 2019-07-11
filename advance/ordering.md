@@ -16,7 +16,7 @@ To enable a column to be sorted, just add `sorter = true` to the definition.
 ```php
 $columns = [[
     'label' => 'Gender',
-    'dataIndex' => 'gender',
+    'name' => 'gender',
     'sortable' => true,
 ]];
 ```

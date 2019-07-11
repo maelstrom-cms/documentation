@@ -48,3 +48,44 @@ class PagePanel extends Panel
     }
 }
 ```
+
+## Appending Attributes
+
+Sometimes a full transformer is overkill, and you just need to append a single attribute / accessor to the serialised data.
+
+You can do this using the `setWithAttributes()` method.
+
+e.g. Imagine you had a post count attribute on your model.
+
+```php
+class Category extends Model
+{
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+    
+    public function getPostCountAttribute()
+    {
+        return $this->posts->count();
+    }
+}
+```
+
+You can then append this attribute so all the models will be provided with this data.
+
+
+```php
+class CategoryController extends Controller
+{
+    protected $panel;
+    
+    public function __construct()
+    {
+        $this->panel = maelstrom(Category::class)
+        ->setWithAttributes(['post_count]);
+    }
+}
+```
+
+The array of `$entries` will now have the result of the `getPostCountAttribute` method appended so your javascript or the entry table component can access it.
