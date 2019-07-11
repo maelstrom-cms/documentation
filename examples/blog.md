@@ -1,5 +1,9 @@
 # Creating a Basic Blog
 
+::: tip
+You can watch the video version of this tutorial within the [getting started section.](/getting-started/#video-tutorials)
+:::
+
 This tutorial will go through every step to create a fully functioning backend for a blog with tags and categories as a brand new project.
 
 ::: warning

@@ -49,4 +49,43 @@ Any questions then please get in contact with [talk@maelstrom-cms.com](mailto:ta
 
 ## Questions and Support
 
-You can email [talk@maelstrom-cms.com](mailto:talk@maelstrom-cms.com) for questions, however if you need code support 
+You can email [talk@maelstrom-cms.com](mailto:talk@maelstrom-cms.com) for questions, however if you need code support
+
+## Video Tutorials
+
+Below we have a small selection of videos showing how to use various features whilst creating a blog, there is between 1 and 2 hours worth of content.
+
+> Excuse the bad microphone! 😇
+
+### Getting Started
+
+Learning how to install and configure Maelstrom.
+
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/xr9c_4uVvsc?modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+### Creating a Category Panel
+
+A very simple panel to help you get to grips with the code structure.
+
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/bwOZrAcSsCQ?modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+
+### Creating a Posts Panel
+
+A more advance panel with extra fields and features.
+
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/c3j_3LUeEQI?modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+
+### Adding a Sidebar
+
+Managing the sidebar within the control panel.
+
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/A07xlbzrbvc?modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+
+### Adding Filters
+
+How to create filters for different column types.
+
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/4BdcC9eQcDY?modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>

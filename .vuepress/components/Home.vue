@@ -111,7 +111,55 @@
 
                     <div class="lg:w-2/3">
                         <p>Creating a panel is incredibly straight forward, you just need the normal set of components, e.g. a route, a controller, a model and some templates.</p>
-                        <p>Below you can see a bare minimal example of what this might look like.</p>
+                    </div>
+
+                    <div>
+                        <p>We've even created a short video series walking you through creating a backend for your own blog.</p>
+
+                        <div class="mt-10 flex flex-wrap text-center">
+
+                            <div class="w-1/5 pr-20">
+                                <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/watch?v=xr9c_4uVvsc">
+                                    <img class="w-full h-auto rounded-lg" src="https://i.ytimg.com/vi/xr9c_4uVvsc/hqdefault.jpg" alt="Watch Part 1 Thumbnail">
+                                    <span class="mt-3 inline-block">Getting Started</span>
+                                </a>
+                            </div>
+
+                            <div class="w-1/5 pr-20">
+                                <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/watch?v=bwOZrAcSsCQ">
+                                    <img class="w-full h-auto rounded-lg" src="https://i.ytimg.com/vi/bwOZrAcSsCQ/hqdefault.jpg" alt="Watch Part 2 Thumbnail">
+                                    <span class="mt-3 inline-block">Categories Panel</span>
+                                </a>
+                            </div>
+
+                            <div class="w-1/5 pr-20">
+                                <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/watch?v=c3j_3LUeEQI">
+                                    <img class="w-full h-auto rounded-lg" src="https://i.ytimg.com/vi/c3j_3LUeEQI/hqdefault.jpg" alt="Watch Part 3 Thumbnail">
+                                    <span class="mt-3 inline-block">Posts Panel</span>
+                                </a>
+                            </div>
+
+                            <div class="w-1/5 pr-20">
+                                <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/watch?v=A07xlbzrbvc">
+                                    <img class="w-full h-auto rounded-lg" src="https://i.ytimg.com/vi/A07xlbzrbvc/hqdefault.jpg" alt="Watch Part 4 Thumbnail">
+                                    <span class="mt-3 inline-block">Adding a Sidebar</span>
+                                </a>
+                            </div>
+
+                            <div class="w-1/5 pr-20">
+                                <a target="_blank" rel="noreferrer noopener" href="https://www.youtube.com/watch?v=4BdcC9eQcDY">
+                                    <img class="w-full h-auto rounded-lg" src="https://i.ytimg.com/vi/4BdcC9eQcDY/hqdefault.jpg" alt="Watch Part 5 Thumbnail">
+                                    <span class="mt-3 inline-block">Adding Filters</span>
+                                </a>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-10 md:mt-20 lg:w-2/3">
+                        <p>Below you can also see a bare minimal example of what this might look like below.</p>
                     </div>
 
                     <div class="lg:flex flex-wrap">
