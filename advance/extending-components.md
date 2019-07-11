@@ -10,7 +10,7 @@ There's 3 steps you'll need to take
 
 ### Creating your extended component
 ```js
-import TextInput from '@maelstrom-cms/js/fields/TextInput'
+import TextInput from '@maelstrom-cms/toolkit/js/inputs/TagsInput'
 
 class CurrencyInput extends TextInput
 {
@@ -26,7 +26,7 @@ Before any custom components become available you'll need to add them to the reg
 
 ```js
 import CurrencyInput from '/my-components/CurrentyInput'
-import Registry from '@maelstrom-cms/js/support/Registry'
+import Registry from '@maelstrom-cms/toolkit/js/support/Registry'
 
 Registry.register({
     CurrencyInput,

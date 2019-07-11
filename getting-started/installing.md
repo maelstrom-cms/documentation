@@ -162,6 +162,7 @@ There is not much you need to do to set up the PHP side of things, you should ho
 
 ```sh
 php artisan vendor:publish --tag maelstrom-config
+php artisan vendor:publish --tag maelstrom-stubs
 ```
 
 If you're going to use the Media Manager then you'll need to run the migrations.

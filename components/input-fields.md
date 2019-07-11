@@ -1262,38 +1262,26 @@ Then just make sure your hidden input doesn't render e.g.
 
 Depending on your setup, the below might change - however for example purposes we'll assume you're using Mix.
 
-Firstly you'll need to make sure you've got a javascript file to load your custom code into, include it in the page and compile it e.g.
+Firstly you'll need to import your component into the entry file e.g. maelstrom.js
 
-1. Create `resources/js/my-maelstrom.js`
+1. Edit `resources/js/maelstrom.js` (or what ever your entry file is which runs `require('@maelstrom-cms/toolkit');`)
 2. Import the component registry
 4. Register your component
 
 ```js
-// my-maelstrom.js
-
-import Registry from '@maelstrom/support/Registry'
+import Registry from '@maelstrom-cms/toolkit/js/support/Registry'
 import MyComponent from './MyCustomInput.js'
 
 Registry.register({
     MyCustomInput: MyComponent,
 });
+
+require('@maelstrom-cms/toolkit');
 ```
 
-Now you'll need to compile your JS e.g.
-
-```js
-// webpack.mix.js
-
-mix.react('resources/js/my-maelstrom.js', 'public/js')
-```
-
-Once your code is compiling you need to include it within your `config/maelstrom.php` e.g.
-
-```php
-'custom_js' => [
-    'js/my-maelstrom.js',
-],
-```
+::: danger
+Make sure you register your custom components **BEFORE** initialising `@maelstrom-cms/toolkit`.
+:::
 
 Once you've confirmed your JS is included on the page you can render your component by either creating an include, or directly referencing it via a `data-component` attribute using the name you defined whilst registering it e.g.
 
