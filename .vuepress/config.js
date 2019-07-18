@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports = {
     title: 'Maelstrom CMS Toolkit',
-    description: 'Maelstrom CMS Toolkit for Laravel, React and Tailwind.',
+    description: 'A CMS toolkit for intermediate to advanced development teams who love React, Tailwind & Laravel.',
     plugins: [
         '@vuepress/active-header-links',
         ['seo', {

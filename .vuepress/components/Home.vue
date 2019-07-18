@@ -16,7 +16,7 @@
                 <div class="lg:w-1/2 lg:pr-4">
                     <h1>Maelstrom CMS Toolkit</h1>
 
-                    <p class="text-lg lg:text-2xl font-bold text-indigo-900 leading-normal">A CMS toolkit for intermediate to advanced development teams who love React and Laravel.</p>
+                    <p class="text-lg lg:text-2xl font-bold text-indigo-900 leading-normal">A CMS toolkit for intermediate to advanced development teams who love React, Tailwind & Laravel.</p>
 
                     <p>Maelstrom is a collection of Laravel and React components to help you flesh out your own control panels using as much of vanilla Laravel as possible.</p>
 
