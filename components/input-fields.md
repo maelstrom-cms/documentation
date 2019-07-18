@@ -66,7 +66,7 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
     'help' => 'Some helpful supporting text.',
     'label' => 'Permissions',
     'name' => 'permissions',
-]);
+])
 ```
 
 ## Colour Picker
@@ -93,7 +93,7 @@ Displays a normal single checkbox, or a group of checkboxes provided by `$option
 @include('maelstrom::inputs.colour', [
     'type' => 'Circle',
     'colours' => ['#ffffff', '#000000'],
-]);
+])
 ```
 
 Other `type`'s we accept are:
@@ -379,6 +379,8 @@ This acts the same as the single file uploader, however will store an array of f
 
 Very much the same as the file uploader, but support thumbnails.
 
+For the thumbnails to render correctly you'll need to provide the URL to 
+
 #### Preview
 
 <img src="/image-preview.jpg" class="mt-6 m-w-full h-auto" style="width: 250px;" />
@@ -605,7 +607,7 @@ When you need to enable only a single choice from some options, radios are often
             'value' => 0,
         ],
     ],
-]);
+])
 ```
 
 ## Text Input
@@ -658,7 +660,7 @@ The text input powers several other inputs, allowing them to inherit certain oth
     
     'addon_after' => 'mph',
     'addon_after_icon' => 'car',
-]);
+])
 ```
 
 ::: warning
@@ -758,7 +760,7 @@ If you define the `character` prop it will overwrite the `icon` prop.
     'colour' => '#ff0000',
     
     'allow_clear' => true,
-]);
+])
 ```
 
 ## Secret / Password Field
@@ -831,7 +833,7 @@ If you're using it for relationships you can enable the create button feature to
         'style' => 'primary',
         'size' => 'large',
     ],
-]);
+])
 ```
 
 ::: warning
@@ -916,7 +918,7 @@ If you want to make sure you always get the `label` value you can set `save_labe
     ],
     'allow_wild_values' => true,
     'save_labels' => true,
-]);
+])
 ```
 
 ## Transfer / Relationship
@@ -965,7 +967,7 @@ This is the recommended input to use when you need to present the user with lots
         'style' => 'primary',
         'size' => 'large',
     ],
-]);
+])
 ```
 
 ::: warning
@@ -1001,7 +1003,7 @@ Both Vimeo and YouTube will return the following in a standardised format - so m
 ```php
 @include('maelstrom::inputs.video', [
     //... TextInput props.
-]);
+])
 ```
 
 ::: warning
@@ -1140,7 +1142,7 @@ You must define a `fields` array which takes a list of inputs that you want to i
             'name' => 'photo',
         ],
     ],
-]);
+])
 ```
 
 ::: danger

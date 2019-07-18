@@ -3,9 +3,14 @@ const glob = require('glob-all')
 const path = require('path')
 
 module.exports = {
-    title: 'Maelstrom',
-    description: 'Maelstrom CMS Toolkit for Laravel and React',
-    plugins: ['@vuepress/active-header-links'],
+    title: 'Maelstrom CMS Toolkit',
+    description: 'Maelstrom CMS Toolkit for Laravel, React and Tailwind.',
+    plugins: [
+        '@vuepress/active-header-links',
+        ['seo', {
+            image: ($page, $site) => ($site.themeConfig.domain || '') + '/hero.jpg',
+        }],
+    ],
     postcss: {
         plugins: [
             require('tailwindcss'),
@@ -23,6 +28,7 @@ module.exports = {
             indexName: 'maelstrom-cms',
         } : false,
         sidebarDepth: 1,
+        domain: 'https://www.maelstrom-cms.com',
         logo: '/maelstrom-icon.svg',
         repo: 'maelstrom-cms/toolkit',
         repoLabel: 'GitHub',
