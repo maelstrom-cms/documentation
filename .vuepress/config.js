@@ -8,7 +8,7 @@ module.exports = {
     plugins: [
         '@vuepress/active-header-links',
         ['seo', {
-            image: ($page, $site) => ($site.themeConfig.domain || '') + '/hero.jpg',
+            image: ($page, $site) => ($site.themeConfig.domain || '') + '/opengraph.jpg',
         }],
     ],
     postcss: {
