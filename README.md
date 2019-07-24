@@ -17,6 +17,21 @@ class PostController extends Controller
     {
         return view('posts.index')->with([
             'entries' => $this->panel->getEntries(),
+            'columns' => [
+                [
+                    'label' => 'Name',
+                    'dataIndex' => 'post_name',
+                    'type' => 'EditLinkColumn',
+                    'sortable' => true,
+                    'searchable' => true,
+                ],
+                [
+                    'label' => 'Featured',
+                    'dataIndex' => 'is_featured',
+                    'type' => 'BooleanColumn',
+                    'align' => 'center',
+                ],
+            ]
         ]);
     }
     
@@ -71,23 +86,14 @@ class PostController extends Controller
 
 ```bash
 // posts.index.blade.php
-@extends('maelstrom::layouts.index', [
-    'columns' => [
-        [
-            'label' => 'Name',
-            'name' => 'post_name',
-            'type' => 'EditLinkColumn',
-            'sortable' => true,
-            'searchable' => true,
-        ],
-        [
-            'label' => 'Featured',
-            'name' => 'is_featured',
-            'type' => 'BooleanColumn',
-            'align' => 'center',
-        ],
-    ]
-])
+@extends('maelstrom::layouts.index')
+
+@section('buttons')
+    @include('maelstrom::buttons.button', [
+        'url' => route('posts.create'),
+        'label' => 'Create Post'
+    ])
+@endsection
 ```
 
 ```bash
