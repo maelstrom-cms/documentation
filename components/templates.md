@@ -111,7 +111,7 @@ class PageController
 
 @section('buttons')
     @include('maelstrom::buttons.button', [
-        'href' => route('pages.create'),
+        'url' => route('pages.create'),
         'label' => 'Create Page'
     ])
 @endsection
