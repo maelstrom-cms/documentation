@@ -41,7 +41,7 @@ You can turn columns into links, which can be useful for linking to related mode
 
 <img src="/text-link-preview.jpg" class="m-w-full h-auto shadow" style="width: 200px;" />
 
-#### Type: `LinkColumn`
+#### Type: `TextLinkColumn`
 
 #### Props
 
@@ -56,7 +56,7 @@ You can turn columns into links, which can be useful for linking to related mode
 ```php
 [
     'label' => 'Category',
-    'type' => 'LinkColumn',
+    'type' => 'TextLinkColumn',
     'name' => 'category.url',
     'labelIndex' => 'category.name',
     'icon' => 'groups',
