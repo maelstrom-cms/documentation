@@ -138,7 +138,7 @@ Once you've got your template extending the `maelstrom::layouts.form` template y
 
     @component('maelstrom::components.form', [
         'action' => $action, // route('pages.create')
-        'method' => $emthod, // POST
+        'method' => $method, // POST
     ])
     
         @include('maelstrom::inputs.text', [
