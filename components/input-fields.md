@@ -1060,7 +1060,7 @@ For boolean style fields we have the toggle switch component, which has the abil
 #### Example 
 
 ```php
-@include('maelstrom::input.switch', [
+@include('maelstrom::inputs.switch', [
     'on_value' => 1,
     'off_value' => 0,
     
@@ -1083,13 +1083,13 @@ For boolean style fields we have the toggle switch component, which has the abil
 The `hide_on` and `hide_off` props accept an array of other inputs which should be hidden when the switch is either turned on or off. You should pass in the name of the attribute you want to hide e.g.
 
 ```php
-@include('maelstrom::input.switch', [
+@include('maelstrom::inputs.switch', [
     'name' => 'is_featured',
     'hide_off' => ['featured_image'],
 ])
 
 // This field is hidden whilst the switch is turned off.
-@include('maelstrom::input.image', [
+@include('maelstrom::inputs.image', [
     'name' => 'featured_image',
 ])
 ``` 
