@@ -19,7 +19,7 @@ This acts as a generic framework which includes various smaller components such 
 If you're extending this layout, you're able to populate the content area by pushing a section to the `main` slot e.g.
 
 ```bash
-@extend('maelstrom::layouts.wrapper')
+@extends('maelstrom::layouts.wrapper')
 
 @section('main')
     
@@ -47,7 +47,7 @@ This template extends the `maelstrom::layouts.wrapper` which uses the `main` slo
 For this template to work, you will need to pass a `$title` and an optional `$breadcrumbs`.
 
 ```bash
-@extend('maelstrom::layouts.basic', [
+@extends('maelstrom::layouts.basic', [
     'breadcrumbs' => [
         [
             'label' => 'Reports',
@@ -132,7 +132,7 @@ It does have some additional slots which can be used for some basic use cases.
 Once you've got your template extending the `maelstrom::layouts.form` template you will still need to use the `content` slot and pass in the [form component.](./the-form.md)
 
 ```bash
-@extend('maelstrom::layouts.form')
+@extends('maelstrom::layouts.form')
 
 @section('content')
 
