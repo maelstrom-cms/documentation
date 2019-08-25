@@ -26,10 +26,15 @@ To enable the page you must first make sure it's turned on within the `config/ma
     'model' => \App\User::class,
 
     /*
-     * If you need to protect this endpoint at route level
+     * If your using a custom auth guard, you can define it here.
+     */
+    'guard' => null,
+
+    /*
+     * If you need to protect this endpoint at route level or anything else
      * you can provide some middleware, which can abort(401) the request.
      */
-    'guard' => 'auth',
+    'middleware' => ['web'],
 ],
 ```
 

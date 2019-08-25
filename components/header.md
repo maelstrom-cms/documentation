@@ -41,5 +41,30 @@ You have the option to either publish the view and make your modifications, howe
 </div>
 
 @endpush
-
 ```
+
+## Logging Out
+
+A Logout button is also included - however there is no logic to actually log you out included.
+
+To display the button you must create a controller and a `POST` route called `maelstrom.logout` which handles your logout logic. e.g.
+
+```php
+class AdminLogOutController extends Controller
+{
+    public function __invoke()
+    {
+        Auth::guard('admin')->logout();
+
+        session()->flash('flash', 'You have been logged out.');
+
+        return redirect()->route('admin.login');
+    }
+}
+
+Route::post('admin/logout', '/Admin/AdminLogOutController')->name('maelstrom.logout');
+```
+
+::: warning
+The logout button will also only show if you're logged in using a `auth()->check()` query. If you're using a custom auth guard - We recommend you set this to the default guard via Middleware around your protected routes e.g. `app('auth')->setDefaultDriver('admin');` 
+:::
