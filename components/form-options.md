@@ -31,6 +31,9 @@ For example, the configuration could look like
         'scopes' => [],
         'value' => 'id',
         'label' => 'name',
+        'allow_none' => true,
+        'none_label' => 'None',
+        'none_value' => '',
     ]
 ]
 ```
@@ -59,6 +62,12 @@ Each entry takes 4 options for basic customisation
 - `scopes` - If you need to limit which models return, you can apply a scope to it - this must always be an array otherwise it will get ignored.
 - `value` - This is the name of the attribute which holds the value you want to save in the database, often it's the primary key or `id` field.
 - `label` - This is the name of the attribute which holds the display text, can be an accessor etc.
+
+There are 3 additional options which can be used to control "none" options - So if your select menu should have an option that represents "none of the below".
+
+- `allow_none` - Will prepend a "None" value to the top of the select menu.
+- `none_value` - What will be submitted from the HTML form - You should not use `null` as forms do not support this, instead use an empty string ``.
+- `none_label` - What to display to the user e.g. `None`. 
 
 ### Making the inputs use the API
 
