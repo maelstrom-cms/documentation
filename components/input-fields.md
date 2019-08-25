@@ -631,6 +631,8 @@ The text input powers several other inputs, allowing them to inherit certain oth
 | - | :- | :- | :-: |
 | html_type | Change the html `type` attribute e.g. `url` or `email` | text |  |
 | autocomplete | Change the html `autocomplete` attribute e.g. `new-password` | `null` |  |
+| readonly | Set the field to readonly | `undefined` |  |
+| disabled | Set the field to disabled | `undefined` |  |
 | allow_clear | Show a button to clear the fields value | `true` |  |
 | prefix | Text to show at the start of the text input | `null` |  |
 | prefix_icon | Icon to show at the start of the text input from ant design icons | `null` |  |
