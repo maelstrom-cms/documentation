@@ -92,6 +92,21 @@ public $filters = null;
 public $sort = null;
 
 /**
+ * When no sort order is defined via the query string, you can fall back to a default
+ * sorting, which is defined by ->setDefaultSorting('name', 'desc')
+ *
+ * @var string|null
+ */
+public $defaultSortColumn = null;
+
+/**
+ * Sets the direction of ordering when using ->setDefaultSorting();
+ *
+ * @var string
+ */
+public $defaultSortDirection = 'asc';
+
+/**
  * If this is set to true - the queries get scoped
  * to only showing the items in the trash. Normally only used
  * when the model uses the SoftDeletes trait.
