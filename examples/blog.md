@@ -880,13 +880,13 @@ However what you might notice is that despite your `tags` saving into the databa
 
 This is because we're just JSON encoding them and not saving them against an external table with unique IDs per tag.
 
-If we want to use free roaming tags, we can use the property `wild_values` to allow it to work without IDs
+If we want to use free roaming tags, we can use the property `allow_wild_values` to allow it to work without IDs
 
 ```bash
 @include('maelstrom::inputs.tags', [
     'label' => 'Tags',
     'name' => 'tags',
-    'wild_values' => true,
+    'allow_wild_values' => true,
 ])
 ```
 
